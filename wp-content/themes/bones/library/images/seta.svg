@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="81.092" height="81.092" viewBox="0 0 81.092 81.092">
+    <defs>
+        <filter id="Icon_ionic-ios-arrow-dropdown-circle" x="0" y="0" width="81.092" height="81.092" filterUnits="userSpaceOnUse">
+            <feOffset dy="3" input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feFlood flood-opacity="0.161"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="Grupo_93" data-name="Grupo 93" transform="translate(-1487.908 -4220.908)">
+        <circle id="Elipse_4" data-name="Elipse 4" cx="28.5" cy="28.5" r="28.5" transform="translate(1500 4230)" fill="#fff"/>
+        <g transform="matrix(1, 0, 0, 1, 1487.91, 4220.91)" filter="url(#Icon_ionic-ios-arrow-dropdown-circle)">
+            <path id="Icon_ionic-ios-arrow-dropdown-circle-2" data-name="Icon ionic-ios-arrow-dropdown-circle" d="M0,31.546A31.546,31.546,0,1,0,31.546,0,31.541,31.541,0,0,0,0,31.546Zm43.846-6.582a2.938,2.938,0,0,1,4.14,0,2.891,2.891,0,0,1,.849,2.063,2.942,2.942,0,0,1-.864,2.078l-14.3,14.256a2.924,2.924,0,0,1-4.034-.091L15.121,28.8a2.928,2.928,0,0,1,4.14-4.14l12.3,12.421Z" transform="translate(9 69.09) rotate(-90)" fill="#fc0"/>
+        </g>
+    </g>
+</svg>
