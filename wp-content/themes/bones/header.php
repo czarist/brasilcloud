@@ -4,7 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?php wp_title(''); ?></title>
+	<title>
+		<?php
+		wp_title('');
+		echo ' - ' . $wp_query->post->post_title;
+		?>
+	</title>
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,19 +44,43 @@
 	<input type="hidden" name="get_template_directory_uri" id="get_template_directory_uri" value="<?php echo get_template_directory_uri(); ?>">
 	<input type="hidden" name="home_url" id="home_url" value="<?php echo home_url(); ?>">
 
+	<!-- particles js -->
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/library/particles/particles.min.js"></script>
 </head>
 
 
 <body <?php body_class(); ?> itemscope itemtype="https://schema.org/WebPage">
 
-	<div id="theWhats" class="d-flex align-items-center justify-content-center">
-		<a target="_blank" href="https://api.whatsapp.com/send?phone=<?= get_field('whatsapp', 5); ?>&text=Gostaria%20de%20marcar%20uma%20consulta!">
-			<img id="whats" src="<?php echo get_template_directory_uri(); ?>/library/images/whats.svg" alt="whats">
-		</a>
-	</div>
 	<div id="container">
 		<header id="header" class="header header-maior w-100" role="banner" itemscope itemtype="https://schema.org/WPHeader">
-			<div id="inner-header" class="container d-flex justify-content-between align-items-center">
+
+			<div id="sup-header" class="d-flex bg-c-DDDDDD">
+				<div class="container p-0">
+					<div class="row justify-content-end align-items-center pt-2 pb-2">
+						<div class="col-xl-6 col-12 ">
+							<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+								<ul class="d-lg-flex d-none justify-content-between align-items-center m-0">
+									<li class="mr-5 d-none d-xl-block">
+										<a class="mb-0 text-dark" href="#">Institucional</a>
+									</li>
+									<li class="mr-5 d-none d-xl-block">
+										<a class="mb-0 text-dark" href="#">Blog</a>
+									</li>
+									<li class="mr-5 d-none d-xl-block">
+										<a class="mb-0 text-dark" href="#">Suporte Online</a>
+									</li>
+									<li class="avaliacao mr-xl-5 m-0">
+										<a class="mb-0 text-dark" href="#">Painel do Cliente</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="inner-header" class="container d-flex justify-content-between align-items-center p-0">
+
 				<img id="open-menu" class="d-flex d-xl-none burguer" src="<?php echo get_template_directory_uri(); ?>/library/images/burguer.svg" alt="open-menu">
 				<img id="close-menu" class="d-none close_it" src="<?php echo get_template_directory_uri(); ?>/library/images/close.svg" alt="open-menu">
 				<p id="logo" class="h1 d-none d-xl-block" itemscope itemtype="https://schema.org/Organization">
@@ -62,37 +91,38 @@
 				<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 					<ul class="d-lg-flex d-none justify-content-between align-items-center m-0">
 						<li class="mr-5 d-none d-xl-block">
-							<a class="mb-0" href="#SERVICOS">SERVIÇOS</a>
+							<a class="mb-0 text-dark" href="#">Computação em Nuvem</a>
 						</li>
 						<li class="mr-5 d-none d-xl-block">
-							<a class="mb-0" href="#DEPOIMENTOS">DEPOIMENTOS</a>
+							<a class="mb-0 text-dark" href="#">Soluções em Nuvem</a>
 						</li>
 						<li class="mr-5 d-none d-xl-block">
-							<a class="mb-0" href="#PLANOS">PLANOS</a>
+							<a class="mb-0 text-dark" href="#">Produtos em Nuvem</a>
 						</li>
 						<li class="avaliacao mr-xl-5 m-0">
-							<a class="mb-0" href="#SAIBAMAIS">SAIBA MAIS</a>
+							<a class="mb-0 text-dark" href="#">Atendimento</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
+
 			<nav id='menu-mobile' class="d-none" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 				<ul class="">
 					<li class="mb-3 d-flex">
-						<a class="text-left" href="#SERVICOS">SERVIÇOS</a>
+						<a class="text-left text-dark" href="#">Computação em Nuvem</a>
 					</li>
 					<li class="mb-3 d-flex">
-						<a class="text-left" href="#DEPOIMENTOS">DEPOIMENTOS</a>
+						<a class="text-left text-dark" href="#">Soluções em Nuvem</a>
 					</li>
 					<li class="mb-3 d-flex">
-						<a class="text-left" href="#PLANOS">PLANOS</a>
+						<a class="text-left text-dark" href="#">Produtos em Nuvem</a>
 					</li>
 					<li class="mb-3 d-flex">
-						<a class="text-left" href="#SAIBAMAIS">SAIBA MAIS</a>
+						<a class="text-left text-dark" href="#">Atendimento</a>
 					</li>
 					<li class="mb-3 d-flex w-100 justify-content-center">
 						<p id="logo" class="h1" itemscope itemtype="https://schema.org/Organization">
-							<a href="#banners" rel="nofollow">
+							<a href="#logo" rel="nofollow">
 								<img id="imgLogo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo.svg" alt="logo">
 							</a>
 						</p>
@@ -100,40 +130,5 @@
 				</ul>
 
 			</nav>
+
 		</header>
-		<div id="banners" class="banner-top fx fx-center">
-			<div class="swiper">
-				<div class="swiper-wrapper">
-
-					<?php
-					if (have_rows('banners', 5)) :
-						while (have_rows('banners', 5)) : the_row();
-							$imagem = get_sub_field('imagem', 5);
-							$texto = get_sub_field('texto', 5);
-							$link = get_sub_field('link', 5);
-							$textoLink = get_sub_field('texto-link', 5);
-					?>
-							<div class="swiper-slide banner position-relative  d-flex justify-content-start align-items-center" style="background-image: url('<?= $imagem ?>');">
-								<div class="filter"></div>
-								<div class="container">
-									<div class="row">
-										<div class="col-12 col-xl-6 text-banner text-white">
-											<?= $texto ?>
-											<a class="queromais" href="<?= $link ?>"><?= $textoLink ?></a>
-										</div>
-									</div>
-								</div>
-							</div>
-					<?php
-						endwhile;
-					endif;
-					?>
-				</div>
-
-			</div>
-			<div id="theDown" class="d-flex align-items-center justify-content-center">
-				<a href="#SERVICOS">
-					<img id="down" src="<?php echo get_template_directory_uri(); ?>/library/images/down.svg" alt="down">
-				</a>
-			</div>
-		</div>
