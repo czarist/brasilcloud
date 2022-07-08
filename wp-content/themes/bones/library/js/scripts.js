@@ -1,46 +1,98 @@
-/* Autor: Ondaweb | Comunicação Digital | Lucas Cezar Trentin */
-function updateViewportDimensions() {
-    var w = window,
-        d = document,
-        e = d.documentElement,
-        g = d.getElementsByTagName('body')[0],
-        x = w.innerWidth || e.clientWidth || g.clientWidth,
-        y = w.innerHeight || e.clientHeight || g.clientHeight;
-    return { width: x, height: y };
-}
-var viewport = updateViewportDimensions();
-var waitForFinalEvent = (function() {
-    var timers = {};
-    return function(callback, ms, uniqueId) {
-        if (!uniqueId) { uniqueId = "Don't call this twice without a uniqueId"; }
-        if (timers[uniqueId]) { clearTimeout(timers[uniqueId]); }
-        timers[uniqueId] = setTimeout(callback, ms);
-    };
-})();
-var timeToWaitForLast = 100;
+/* Autor: | Lucas Cezar Trentin */
 
-function loadGravatars() {
-    viewport = updateViewportDimensions();
-    if (viewport.width >= 768) {
-        jQuery('.comment img[data-gravatar]').each(function() {
-            jQuery(this).attr('src', jQuery(this).attr('data-gravatar'));
-        });
-    }
-} // end function
-/* Ondaweb regular jQuery */
 jQuery(document).ready(function($) {
+
+    // faz aparecer e desaparecer os blocos da home;
+    // "typeof" verifica se os elementos de serviço da home não são indefinidos;
+
+    let servicos_bloco = document.getElementsByClassName('servicos-bloco');
+    let mais_servicos = document.getElementById('mais_servicos');
+    let menos_servicos = document.getElementById('menos_servicos');
+    let ajaxLoad = document.getElementById('ajaxLoad');
+    // constante para widht máximo
+    const maxWidth = 800;
+
+    // esconde os ultimos blocos
+    if (typeof servicos_bloco != 'undefined') {
+
+        if (servicos_bloco.length <= 6) {
+            for (let a = 0; a < servicos_bloco.length; a++) {
+                servicos_bloco[a].classList.remove('d-none');
+            }
+        } else {
+            for (let a = 0; a < 6; a++) {
+                servicos_bloco[a].classList.remove('d-none');
+            }
+        }
+    }
+
+    //mostra mais publicações
+
+    if (typeof mais_servicos != 'undefined') {
+
+        mais_servicos.onclick = function() {
+
+            // remove o botão de ver mais
+            mais_servicos.classList.add('d-none');
+            mais_servicos.classList.remove('d-flex');
+
+            // mostra botão do ajax
+            ajaxLoad.classList.remove('d-none');
+
+            //funcao do setTimeOut
+            function mostrar() {
+
+                // mostra todos os blocos
+                for (let a = 0; a < servicos_bloco.length; a++) {
+                    servicos_bloco[a].classList.remove('d-none');
+                }
+
+                // mostra o botão de ver menos
+                menos_servicos.classList.add('d-flex');
+                menos_servicos.classList.remove('d-none');
+
+                //esconde botão do ajax
+                ajaxLoad.classList.add('d-none')
+            }
+
+            setTimeout(function() { mostrar() }, 2000);
+        }
+    }
+
+    if (typeof menos_servicos != 'undefined') {
+
+        menos_servicos.onclick = function() {
+
+            // mostra o botão de ver mais
+            mais_servicos.classList.add('d-flex');
+            mais_servicos.classList.remove('d-none');
+
+            // esconder o botão de ver menos
+            menos_servicos.classList.add('d-none');
+            menos_servicos.classList.remove('d-flex');
+
+            // esconde os ultimos blocos
+            for (let a = 6; a < servicos_bloco.length; a++) {
+                servicos_bloco[a].classList.add('d-none');
+            }
+        }
+    }
+
+    // fim da parte dos serviços da home
+
+    // inicia bilbioteca do AOS
 
     AOS.init({
         disable: function() {
-            var maxWidth = 800;
             return window.innerWidth < maxWidth;
         },
     });
 
+    // Efeito de scroll demorado
 
     $('a[href^="#"]').on("click", function(e) {
         e.preventDefault();
-        var id = $(this).attr("href"),
+        let id = $(this).attr("href"),
             targetOffset = $(id).offset().top;
 
         $("html, body").animate({
@@ -71,116 +123,122 @@ jQuery(document).ready(function($) {
     };
 
     // particles home 
-    particlesJS(`my-particles-1`, {
-        particles: {
-            number: {
-                value: 100,
-                density: {
-                    enable: true,
-                    value_area: 800,
-                },
-            },
-            color: {
-                value: '#eeeeee',
-            },
-            shape: {
-                type: 'circle',
-                stroke: {
-                    width: 0,
-                    color: '#000000',
-                },
-                polygon: {
-                    nb_sides: 5,
-                },
-                image: {
-                    src: 'img/github.svg',
-                    width: 100,
-                    height: 100,
-                },
-            },
-            opacity: {
-                value: 1,
-                random: false,
-                anim: {
-                    enable: false,
-                    speed: 1,
-                    opacity_min: 0.1,
-                    sync: false,
-                },
-            },
-            size: {
-                value: 3,
-                random: true,
-                anim: {
-                    enable: false,
-                    speed: 40,
-                    size_min: 0.1,
-                    sync: false,
-                },
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: '#eeeeee',
-                opacity: 1,
-                width: 1,
-            },
-            move: {
-                enable: true,
-                speed: 6,
-                direction: 'none',
-                random: false,
-                straight: false,
-                out_mode: 'out',
-                bounce: false,
-                attract: {
-                    enable: false,
-                    rotateX: 600,
-                    rotateY: 1200,
-                },
-            },
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: {
-                onhover: {
-                    enable: false,
-                    mode: 'repulse',
-                },
-                onclick: {
-                    enable: false,
-                    mode: 'push',
-                },
-                resize: true,
-            },
-            modes: {
-                grab: {
-                    distance: 400,
-                    line_linked: {
-                        opacity: 1,
+
+    // carrega somente em resoluções horizontais maiores que 800px
+
+    if (window.outerWidth > maxWidth) {
+        particlesJS(`my-particles-1`, {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800,
                     },
                 },
-                bubble: {
-                    distance: 400,
-                    size: 40,
-                    duration: 2,
-                    opacity: 8,
-                    speed: 3,
+                color: {
+                    value: '#eeeeee',
                 },
-                repulse: {
-                    distance: 200,
-                    duration: 0.4,
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000',
+                    },
+                    polygon: {
+                        nb_sides: 5,
+                    },
+                    image: {
+                        src: 'img/github.svg',
+                        width: 100,
+                        height: 100,
+                    },
                 },
-                push: {
-                    particles_nb: 4,
+                opacity: {
+                    value: 1,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false,
+                    },
                 },
-                remove: {
-                    particles_nb: 2,
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false,
+                    },
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#eeeeee',
+                    opacity: 1,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200,
+                    },
                 },
             },
-        },
-        retina_detect: false,
-    });
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: false,
+                        mode: 'repulse',
+                    },
+                    onclick: {
+                        enable: false,
+                        mode: 'push',
+                    },
+                    resize: true,
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1,
+                        },
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3,
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4,
+                    },
+                    push: {
+                        particles_nb: 4,
+                    },
+                    remove: {
+                        particles_nb: 2,
+                    },
+                },
+            },
+            retina_detect: false,
+        });
+    }
+
 
 
     var swiper = new Swiper('.swiper', {
@@ -246,6 +304,5 @@ jQuery(document).ready(function($) {
     }
 
 
-    loadGravatars();
 
 });

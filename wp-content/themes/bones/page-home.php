@@ -47,13 +47,120 @@
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 					<article id="post-<?php the_ID(); ?>" <?php post_class('cf screen section'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-						<div class="wrap">
-							<section class="entry-content cf" itemprop="articleBody">
+						<section class="entry-content pt-5 cf" itemprop="articleBody">
 
+							<section id="servicos" class="mt-5 pt-5 mb-5 pb-5 container">
+								<div class="row justify-content-center align-items-center">
+									<div class="col-12 text-center text-dark d-flex justify-content-center align-items-center flex-column">
+										<h2><?= get_field('titulo_servicos', 8) ?></h2>
+										<div class="barra-verde mt-2"></div>
+									</div>
 
+									<?php
+									$args = array(
+										'post_type' => 'solucoes_e_produtos',
+										'post_status' => 'publish',
+										'posts_per_page' => -1,
+										'orderby' => 'title',
+										'order' => 'ASC',
+									);
+
+									$loop = new WP_Query($args);
+
+									while ($loop->have_posts()) : $loop->the_post();
+									?>
+
+										<div class="row servicos-bloco p-4 d-none col-12 col-xl-4 justify-content-center align-items-center">
+											<div class="col-12 the_servico d-flex justify-content-center align-items-center">
+												<div class="row">
+													<div class="col-12">
+														<?php include 'library/images/servico_fundo.svg'; ?>
+
+														<h6><?php the_title(); ?></h6>
+
+														<?php the_excerpt(); ?>
+
+														<a href="<?php echo the_permalink() ?>"> <b>Saiba mais ></b> </a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									<?php
+									endwhile;
+									wp_reset_postdata();
+									?>
+								</div>
+								<div class="col-12 d-flex justify-content-center align-items-center flex-column mt-5">
+									<div id="mais_servicos" class="botaoFakeAjax d-flex">
+										<span><b>Ver todos os serviços</b></span>
+									</div>
+									<div id="menos_servicos" class="botaoFakeAjax d-none">
+										<span><b>Ver menos serviços</b></span>
+									</div>
+									<div id="ajaxLoad" class="d-none">
+										<div class="lds-roller">
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section id="quem-confia-home" class="mt-5 pt-5 mb-5 pb-5 container">
+								<div class="row">
+
+									<div class="col-12 text-center text-dark d-flex justify-content-center align-items-center flex-column">
+										<h2><?= get_field('titulo_quem_confia', 8) ?></h2>
+										<div class="barra-verde mt-2"></div>
+									</div>
+
+									<?php
+									if (have_rows('quem_confia', 8)) :
+										while (have_rows('quem_confia', 8)) : the_row();
+											$logo_quem_confia = get_sub_field('logo_quem_confia'); ?>
+
+											<div class="col-12 col-xl-3 mt-4 d-flex justify-content-center align-items-center">
+												<img src="<?= $logo_quem_confia ?>" alt="logo quem confia">
+											</div>
+
+									<?php endwhile;
+									endif; ?>
+								</div>
 
 							</section>
-						</div>
+
+							<section id="sobre-home" class="mt-5 pt-5 mb-5 pb-5">
+								<div class="row min-h-section">
+									<div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
+										<div class="row justify-content-center align-items-center">
+											<div class="col-12 col-xl-6 ">
+												<h2><?= get_field('titulo_sobre', 8) ?></h2>
+												<div class="barra-verde mt-2 mb-2"></div>
+												<p> <?= get_field('texto_sobre', 8) ?></p>
+												<a class="generalSaibaMais d-flex" href="<?= get_field('link_sobre', 8) ?>"> <b>Saiba Mais</b> </a>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-xl-6 bg-center bg-cover bg-nrp" style="background-image: url('<?= get_field('imagem_sobre', 8) ?>');"></div>
+							</section>
+
+							<section id="blog-home" class="bg-c-24cb9d59 mb-0 min-h-section">
+
+								<div class="content">
+									<div class="row">
+										<div class="col-12"></div>
+									</div>
+								</div>
+
+							</section>
+
+						</section>
 					</article>
 
 			<?php endwhile;
