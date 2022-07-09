@@ -268,6 +268,24 @@ jQuery(document).ready(function($) {
         //   }
     });
 
+    const swiper2 = new Swiper('.swiper2', {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        pagination: {
+            el: '.swiper-pagination2',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: 20
+            }
+        }
+
+    });
+
+
 
     function consultar_registro() {
         var dominio = $('#dominio').val();

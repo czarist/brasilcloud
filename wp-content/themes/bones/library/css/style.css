@@ -40,8 +40,13 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
+body div {
+    max-width: 100%;
+}
+
 body {
     margin: 0;
+    overflow-x: hidden;
 }
 
 
@@ -1000,10 +1005,14 @@ select {
 
 /* SWIPPER */
 
-.swiper {
+.swiper,
+.swiper2 {
     width: 100%;
     max-width: 100%;
     height: auto;
+}
+
+#banners .swiper {
     background-color: black;
 }
 
@@ -1017,7 +1026,12 @@ select {
     background: #fff;
 }
 
-#banners .swiper-pagination-bullet-active {
+#blog-home .swiper-pagination-bullet {
+    background: #212121;
+}
+
+#banners .swiper-pagination-bullet-active,
+#blog-home .swiper-pagination-bullet-active {
     opacity: 1;
     background: #2BAFCF;
 }
@@ -1055,6 +1069,38 @@ select {
 
 
 /* ENDS BACKGROUND COLOR */
+
+
+/* BLOG */
+
+.box-blog {
+    height: 410px;
+    width: 370px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #00000038;
+    overflow: hidden;
+}
+
+.box-blog img {
+    max-height: 230px;
+    max-width: 350px;
+}
+
+.ler-mais-blog {
+    position: absolute;
+    color: #CF9D21;
+    right: 0;
+    padding-right: 1pc;
+    bottom: 10px;
+}
+
+
+/* END BLOG */
+
+#titles-blog-home h5 {
+    color: #CF9D21;
+}
 
 .barra-verde {
     width: 100px;
@@ -1158,6 +1204,8 @@ div#newsletter input {
 .min-h-section {
     min-height: 625px;
     height: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 section#quem-confia-home img {
