@@ -84,22 +84,22 @@
 				<img id="open-menu" class="d-flex d-xl-none burguer" src="<?php echo get_template_directory_uri(); ?>/library/images/burguer.svg" alt="open-menu">
 				<img id="close-menu" class="d-none close_it" src="<?php echo get_template_directory_uri(); ?>/library/images/close.svg" alt="open-menu">
 				<p id="logo" class="h1 d-none d-xl-block" itemscope itemtype="https://schema.org/Organization">
-					<a href="#banners" rel="nofollow">
+					<a href="<?= home_url() ?>" rel="nofollow">
 						<img id="imgLogo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo.svg" alt="logo">
 					</a>
 				</p>
 				<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 					<ul class="d-lg-flex d-none justify-content-between align-items-center m-0">
-						<li class="mr-5 d-none d-xl-block">
+						<li class="mr-5 d-none d-xl-block menu-item">
 							<a class="mb-0 text-dark" href="#">Computação em Nuvem</a>
 						</li>
-						<li class="mr-5 d-none d-xl-block">
+						<li class="mr-5 d-none d-xl-block menu-item">
 							<a class="mb-0 text-dark" href="#">Soluções em Nuvem</a>
 						</li>
-						<li class="mr-5 d-none d-xl-block">
+						<li class="mr-5 d-none d-xl-block menu-item">
 							<a class="mb-0 text-dark" href="#">Produtos em Nuvem</a>
 						</li>
-						<li class="avaliacao mr-xl-5 m-0">
+						<li class="avaliacao mr-xl-5 m-0 menu-item">
 							<a class="mb-0 text-dark" href="#">Atendimento</a>
 						</li>
 					</ul>
@@ -107,28 +107,6 @@
 			</div>
 
 			<nav id='menu-mobile' class="d-none" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
-				<ul class="">
-					<li class="mb-3 d-flex">
-						<a class="text-left text-dark" href="#">Computação em Nuvem</a>
-					</li>
-					<li class="mb-3 d-flex">
-						<a class="text-left text-dark" href="#">Soluções em Nuvem</a>
-					</li>
-					<li class="mb-3 d-flex">
-						<a class="text-left text-dark" href="#">Produtos em Nuvem</a>
-					</li>
-					<li class="mb-3 d-flex">
-						<a class="text-left text-dark" href="#">Atendimento</a>
-					</li>
-					<li class="mb-3 d-flex w-100 justify-content-center">
-						<p id="logo" class="h1" itemscope itemtype="https://schema.org/Organization">
-							<a href="#logo" rel="nofollow">
-								<img id="imgLogo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo.svg" alt="logo">
-							</a>
-						</p>
-					</li>
-				</ul>
-
 			</nav>
 
 		</header>

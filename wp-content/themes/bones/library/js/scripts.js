@@ -268,21 +268,21 @@ jQuery(document).ready(function($) {
         //   }
     });
 
+    //Breakpoints do swipper não estavam funcionando
+    let slidersCounter;
+    if (window.outerWidth > maxWidth) {
+        slidersCounter = 4;
+    } else {
+        slidersCounter = 1;
+    }
+
     const swiper2 = new Swiper('.swiper2', {
-        slidesPerView: 4,
+        slidesPerView: slidersCounter,
         spaceBetween: 10,
         pagination: {
             el: '.swiper-pagination2',
             clickable: true,
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                slidesPerGroup: 1,
-                spaceBetween: 20
-            }
         }
-
     });
 
 

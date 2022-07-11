@@ -166,20 +166,40 @@
 										$the_argo = array(
 											'post_type' => 'blog',
 											'post_status' => 'publish',
-											'posts_per_page' => 12,
+											'posts_per_page' => 8,
 											'orderby' => 'title',
 											'order' => 'ASC',
 										);
 
+										function get_the_cats()
+										{
+											$categorias = get_the_category();
+											foreach ($categorias as $categoria) {
+												echo '<a href="#" class="cat-blog">' . $categoria->name . '</a>,';
+											}
+										}
+
 										$loop_blog = new WP_Query($the_argo);
 
 										while ($loop_blog->have_posts()) : $loop_blog->the_post();
+											$image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
+											if (!$image) {
+												// se não houver imagem principal selecionada, o IF define essa imagem como capa;
+												$image = get_template_directory_uri() . "/library/images/blog-provisorio.jpg";
+											}
+
 										?>
 
 											<div class="swiper-slide banner row position-relative">
-												<div class="col-12 p-xl-5 p-2">
+												<div class="col-12 p-xl-5 p-2 d-flex justify-content-center align-items-center">
 													<div class="box-blog position-relative ">
-														<img class="p-0 m-0" height="230" width="350" src="<?php echo get_template_directory_uri(); ?>/library/images/blog-provisorio.jpg" alt="img-blog">
+														<img class="p-0 m-0" height="230" width="350" src="<?= $image ?>" alt="img-blog">
+														<div class="row pl-3 pr-3 mt-2">
+															<div class="col-12">
+																<?php get_the_cats() ?>
+															</div>
+														</div>
 														<h6 class="text-black p-3"><?php the_title(); ?></h6>
 														<div class="pl-3 pr-3">
 															<?php the_excerpt(); ?>
@@ -196,7 +216,7 @@
 
 									</div>
 
-									<div class="swiper-pagination2 d-flex justify-content-center align-items-center mb-5"></div>
+									<div class="swiper-pagination2 d-flex justify-content-center align-items-center mb-5 mt-2"></div>
 
 								</div>
 							</section>

@@ -1074,7 +1074,7 @@ select {
 /* BLOG */
 
 .box-blog {
-    height: 410px;
+    height: 455px;
     width: 370px;
     background-color: white;
     border-radius: 20px;
@@ -1084,7 +1084,8 @@ select {
 
 .box-blog img {
     max-height: 230px;
-    max-width: 350px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .ler-mais-blog {
@@ -1095,8 +1096,71 @@ select {
     bottom: 10px;
 }
 
+a.cat-blog {
+    color: #24CB9D !important;
+}
+
 
 /* END BLOG */
+
+
+/* PAGES */
+
+article#post-5240 #banner span {
+    color: white !important;
+}
+
+#blocos {
+    background-image: linear-gradient(white 50%, #24cb9d5c 50%);
+}
+
+section#somos {
+    background-color: #24cb9d5c;
+}
+
+.boxe-bloco {
+    box-shadow: 0px 0px 5px #00000033;
+    margin-top: 10px;
+    height: 394px;
+    border-radius: 20px;
+    margin-left: 2px !important;
+    background-color: white;
+}
+
+.content-bloco-imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 128px;
+}
+
+section#proposito hr {
+    width: 100px;
+    height: 6px;
+    background-color: #24CB9D;
+    border-radius: 50px;
+}
+
+section#proposito h6 em span {
+    color: #007095 !important;
+}
+
+section#banner h4 {
+    text-transform: uppercase !important;
+    color: #CF9D21 !important;
+}
+
+.banner-page {
+    height: 800px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* ENDS PAGES */
 
 #titles-blog-home h5 {
     color: #CF9D21;
@@ -1633,6 +1697,23 @@ h5,
 
 
 /* HEADER STYLES */
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item::before {
+    content: " ";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/baixo.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    right: -20px;
+    top: 3px;
+}
 
 .header {}
 
