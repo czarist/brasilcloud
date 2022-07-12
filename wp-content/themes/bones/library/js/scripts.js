@@ -11,6 +11,16 @@ jQuery(document).ready(function($) {
     let ajaxLoad = document.getElementById('ajaxLoad');
     // constante para widht máximo
     const maxWidth = 800;
+    //Breakpoints do swipper não estavam funcionando
+    let slidersCounter;
+    let slidersCounter2
+    if (window.outerWidth > maxWidth) {
+        slidersCounter = 4;
+        slidersCounter2 = 3;
+    } else {
+        slidersCounter = 1;
+        slidersCounter2 = 1;
+    }
 
     // esconde os ultimos blocos
     if (typeof servicos_bloco != 'undefined') {
@@ -27,8 +37,9 @@ jQuery(document).ready(function($) {
     }
 
     //mostra mais publicações
+    console.log(menos_servicos)
 
-    if (typeof mais_servicos != 'undefined') {
+    if (document.body.contains(mais_servicos)) {
 
         mais_servicos.onclick = function() {
 
@@ -58,8 +69,7 @@ jQuery(document).ready(function($) {
             setTimeout(function() { mostrar() }, 2000);
         }
     }
-
-    if (typeof menos_servicos != 'undefined') {
+    if (document.body.contains(menos_servicos)) {
 
         menos_servicos.onclick = function() {
 
@@ -125,6 +135,87 @@ jQuery(document).ready(function($) {
     // particles home 
 
     // carrega somente em resoluções horizontais maiores que 800px
+
+
+
+    var swiper = new Swiper('.swiper', {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        paginationClickable: true,
+        //spaceBetween: 5000,
+        autoplay: {
+            delay: 8000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+        loop: true,
+        // breakpoints: {
+        //     // when window width is <= 320px
+        //     1024: {
+        //       slidesPerView: 2,
+        //     },
+        //     // when window width is <= 480px
+        //     768: {
+        //       slidesPerView: 1,
+        //       spaceBetween: 20
+        //     }
+        //   }
+    });
+
+    const swiper2 = new Swiper('.swiper2', {
+        slidesPerView: slidersCounter,
+        spaceBetween: 10,
+        pagination: {
+            el: '.swiper-pagination2',
+            clickable: true,
+        }
+    });
+
+    var swiper3 = new Swiper('.swiper3', {
+        slidesPerView: slidersCounter2,
+        spaceBetween: 40,
+        pagination: {
+            el: '.swiper-pagination3',
+            clickable: true,
+        }
+    });
+
+    function consultar_registro() {
+        var dominio = $('#dominio').val();
+        var extensao = $('#extensao').val();
+        if (dominio != '') {
+            $('#resultado_registro').show();
+            $('#btn_registro').addClass('disabled').html('Aguarde...');
+            $('#resultado_registro').prepend('<tr class="consultando_registro"><td colspan="3">Consultando Registro, Pode levar alguns segundos...</td></tr>');
+            $.ajax({
+                url: "https://brasilcloud.com.br/whois/?dominio[]=" + dominio + extensao,
+                dataType: "json",
+                error: function() {
+                    consultar_registro();
+                },
+                success: function(dados) {
+                    $('#resultado_registro').prepend('<tr><td colspan="3"><hr /></td></tr>');
+                    $('#btn_registrar').show();
+                    $('#msg_registrar').show();
+                    $('.consultando_registro').remove();
+                    $.each(dados, function(i, dominio) {
+                        var html_input = '';
+                        var str_registrado = '<b style="color: #199900;">Disponível para registro</b> - Valor Anual: R$ ' + dominio.valor_formatado;
+                        if (dominio.registrado == 1) {
+                            str_registrado = 'Domínio já Registrado';
+                        } else {
+                            html_input = '<input style="margin-bottom: 0px; padding-bottom: 0px;" type="checkbox" name="registrar[' + i + ']" value="' + i + '">';
+                        }
+                        $('#resultado_registro').prepend('<tr><td class="text-center">' + html_input + '</td><td><b>' + i + '</b></td><td>' + str_registrado + '</td></tr>');
+                    });
+                    $('#btn_registro').removeClass('disabled').html('<i class="fi-zoom-in"> </i> Pesquisar');
+                }
+            });
+        }
+    }
 
     if (window.outerWidth > maxWidth) {
         particlesJS(`my-particles-1`, {
@@ -237,90 +328,7 @@ jQuery(document).ready(function($) {
             },
             retina_detect: false,
         });
+
     }
-
-
-
-    var swiper = new Swiper('.swiper', {
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        paginationClickable: true,
-        //spaceBetween: 5000,
-        autoplay: {
-            delay: 8000,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-            clickable: true,
-        },
-        loop: true,
-        // breakpoints: {
-        //     // when window width is <= 320px
-        //     1024: {
-        //       slidesPerView: 2,
-        //     },
-        //     // when window width is <= 480px
-        //     768: {
-        //       slidesPerView: 1,
-        //       spaceBetween: 20
-        //     }
-        //   }
-    });
-
-    //Breakpoints do swipper não estavam funcionando
-    let slidersCounter;
-    if (window.outerWidth > maxWidth) {
-        slidersCounter = 4;
-    } else {
-        slidersCounter = 1;
-    }
-
-    const swiper2 = new Swiper('.swiper2', {
-        slidesPerView: slidersCounter,
-        spaceBetween: 10,
-        pagination: {
-            el: '.swiper-pagination2',
-            clickable: true,
-        }
-    });
-
-
-
-    function consultar_registro() {
-        var dominio = $('#dominio').val();
-        var extensao = $('#extensao').val();
-        if (dominio != '') {
-            $('#resultado_registro').show();
-            $('#btn_registro').addClass('disabled').html('Aguarde...');
-            $('#resultado_registro').prepend('<tr class="consultando_registro"><td colspan="3">Consultando Registro, Pode levar alguns segundos...</td></tr>');
-            $.ajax({
-                url: "https://brasilcloud.com.br/whois/?dominio[]=" + dominio + extensao,
-                dataType: "json",
-                error: function() {
-                    consultar_registro();
-                },
-                success: function(dados) {
-                    $('#resultado_registro').prepend('<tr><td colspan="3"><hr /></td></tr>');
-                    $('#btn_registrar').show();
-                    $('#msg_registrar').show();
-                    $('.consultando_registro').remove();
-                    $.each(dados, function(i, dominio) {
-                        var html_input = '';
-                        var str_registrado = '<b style="color: #199900;">Disponível para registro</b> - Valor Anual: R$ ' + dominio.valor_formatado;
-                        if (dominio.registrado == 1) {
-                            str_registrado = 'Domínio já Registrado';
-                        } else {
-                            html_input = '<input style="margin-bottom: 0px; padding-bottom: 0px;" type="checkbox" name="registrar[' + i + ']" value="' + i + '">';
-                        }
-                        $('#resultado_registro').prepend('<tr><td class="text-center">' + html_input + '</td><td><b>' + i + '</b></td><td>' + str_registrado + '</td></tr>');
-                    });
-                    $('#btn_registro').removeClass('disabled').html('<i class="fi-zoom-in"> </i> Pesquisar');
-                }
-            });
-        }
-    }
-
-
 
 });

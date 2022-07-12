@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp" style="background-image: url('<?= get_field('imagem_1', 5240) ?>');"></div>
+                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left" style="background-image: url('<?= get_field('imagem_1', 5240) ?>');"></div>
                                 </div>
                             </section>
 
@@ -63,7 +63,7 @@
 
                             <section id="hoje" class="mt-5 pt-5 mb-5 pb-5">
                                 <div class="row min-h-section">
-                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp" style="background-image: url('<?= get_field('imagem_3', 5240) ?>');"></div>
+                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-right" style="background-image: url('<?= get_field('imagem_3', 5240) ?>');"></div>
                                     <div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-12 col-xl-6 ">
@@ -105,14 +105,14 @@
 
                             <section id="somos">
                                 <div class="row min-h-section pb-5">
-                                    <div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
+                                    <div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center ">
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-12 col-xl-6 ">
                                                 <h2><?= get_field('texto_4', 5240) ?></h2>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp" style="background-image: url('<?= get_field('imagem_4', 5240) ?>');"></div>
+                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left" style="background-image: url('<?= get_field('imagem_4', 5240) ?>');"></div>
                                 </div>
                             </section>
                     </article>

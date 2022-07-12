@@ -1026,12 +1026,18 @@ select {
     background: #fff;
 }
 
-#blog-home .swiper-pagination-bullet {
+#blog-home .swiper-pagination-bullet,
+#blocos-infra .swiper-pagination-bullet {
     background: #212121;
 }
 
+#blocos-infra .swiper-pagination-bullet {
+    margin-right: 10px;
+}
+
 #banners .swiper-pagination-bullet-active,
-#blog-home .swiper-pagination-bullet-active {
+#blog-home .swiper-pagination-bullet-active,
+#blocos-infra .swiper-pagination-bullet-active {
     opacity: 1;
     background: #2BAFCF;
 }
@@ -1105,6 +1111,58 @@ a.cat-blog {
 
 
 /* PAGES */
+
+.content-image-bloco {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bloco-infra h4 {
+    color: #007095;
+}
+
+.text-opaco {
+    background-image: linear-gradient(to left, #24CB9D, #007095);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    padding: 14px !important;
+    border-radius: 20px;
+    border: transparent;
+    color: white;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.text-opaco:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.bloco-infra {
+    width: 350px !important;
+    height: 350px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 2px 0px #0000006e;
+    border-radius: 20px;
+}
+
+.br-120-left {
+    border-radius: 120px 0px 0px 0px;
+}
+
+.br-120-right {
+    border-radius: 0px 120px 0px 0px;
+}
 
 article#post-5240 #banner span {
     color: white !important;

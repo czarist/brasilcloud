@@ -147,7 +147,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-xl-6 bg-center bg-cover bg-nrp" style="background-image: url('<?= get_field('imagem_sobre', 8) ?>');"></div>
+									<div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left" style="background-image: url('<?= get_field('imagem_sobre', 8) ?>');"></div>
 							</section>
 
 							<section id="blog-home" class="bg-c-24cb9d59 mb-0 min-h-section">
@@ -231,5 +231,7 @@
 	</div>
 
 </div>
-
+<script type="text/javascript">
+	
+</script>
 <?php get_footer(); ?>
