@@ -3,14 +3,17 @@
 jQuery(document).ready(function($) {
 
     // faz aparecer e desaparecer os blocos da home;
-    // "typeof" verifica se os elementos de serviço da home não são indefinidos;
+    // "body.contains" verifica se os elementos de serviço da home existem, para não conflitar em outras páginas;
 
     let servicos_bloco = document.getElementsByClassName('servicos-bloco');
     let mais_servicos = document.getElementById('mais_servicos');
     let menos_servicos = document.getElementById('menos_servicos');
     let ajaxLoad = document.getElementById('ajaxLoad');
+    let myparticles = document.getElementById('my-particles-1');
+
     // constante para widht máximo
     const maxWidth = 800;
+
     //Breakpoints do swipper não estavam funcionando
     let slidersCounter;
     let slidersCounter2
@@ -23,21 +26,20 @@ jQuery(document).ready(function($) {
     }
 
     // esconde os ultimos blocos
-    if (typeof servicos_bloco != 'undefined') {
 
-        if (servicos_bloco.length <= 6) {
-            for (let a = 0; a < servicos_bloco.length; a++) {
-                servicos_bloco[a].classList.remove('d-none');
-            }
-        } else {
-            for (let a = 0; a < 6; a++) {
-                servicos_bloco[a].classList.remove('d-none');
-            }
+    if (servicos_bloco.length <= 6) {
+        for (let a = 0; a < servicos_bloco.length; a++) {
+            servicos_bloco[a].classList.remove('d-none');
+        }
+    } else {
+        for (let a = 0; a < 6; a++) {
+            servicos_bloco[a].classList.remove('d-none');
         }
     }
 
+
+
     //mostra mais publicações
-    console.log(menos_servicos)
 
     if (document.body.contains(mais_servicos)) {
 
@@ -132,13 +134,7 @@ jQuery(document).ready(function($) {
         document.getElementById("menu-mobile").classList.remove("d-flex");
     };
 
-    // particles home 
-
-    // carrega somente em resoluções horizontais maiores que 800px
-
-
-
-    var swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',
         centeredSlides: true,
         paginationClickable: true,
@@ -174,7 +170,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    var swiper3 = new Swiper('.swiper3', {
+    const swiper3 = new Swiper('.swiper3', {
         slidesPerView: slidersCounter2,
         spaceBetween: 40,
         pagination: {
@@ -217,118 +213,126 @@ jQuery(document).ready(function($) {
         }
     }
 
-    if (window.outerWidth > maxWidth) {
-        particlesJS(`my-particles-1`, {
-            particles: {
-                number: {
-                    value: 100,
-                    density: {
-                        enable: true,
-                        value_area: 800,
-                    },
-                },
-                color: {
-                    value: '#eeeeee',
-                },
-                shape: {
-                    type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000',
-                    },
-                    polygon: {
-                        nb_sides: 5,
-                    },
-                    image: {
-                        src: 'img/github.svg',
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                opacity: {
-                    value: 1,
-                    random: false,
-                    anim: {
-                        enable: false,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false,
-                    },
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: false,
-                        speed: 40,
-                        size_min: 0.1,
-                        sync: false,
-                    },
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#eeeeee',
-                    opacity: 1,
-                    width: 1,
-                },
-                move: {
-                    enable: true,
-                    speed: 6,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200,
-                    },
-                },
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: false,
-                        mode: 'repulse',
-                    },
-                    onclick: {
-                        enable: false,
-                        mode: 'push',
-                    },
-                    resize: true,
-                },
-                modes: {
-                    grab: {
-                        distance: 400,
-                        line_linked: {
-                            opacity: 1,
+    // particles home 
+
+
+    if (document.body.contains(myparticles)) {
+
+        // carrega somente em resoluções horizontais maiores que 800px
+
+        if (window.outerWidth > maxWidth) {
+            particlesJS(`my-particles-1`, {
+                particles: {
+                    number: {
+                        value: 100,
+                        density: {
+                            enable: true,
+                            value_area: 800,
                         },
                     },
-                    bubble: {
-                        distance: 400,
-                        size: 40,
-                        duration: 2,
-                        opacity: 8,
-                        speed: 3,
+                    color: {
+                        value: '#eeeeee',
                     },
-                    repulse: {
-                        distance: 200,
-                        duration: 0.4,
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000000',
+                        },
+                        polygon: {
+                            nb_sides: 5,
+                        },
+                        image: {
+                            src: 'img/github.svg',
+                            width: 100,
+                            height: 100,
+                        },
                     },
-                    push: {
-                        particles_nb: 4,
+                    opacity: {
+                        value: 1,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false,
+                        },
                     },
-                    remove: {
-                        particles_nb: 2,
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false,
+                        },
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#eeeeee',
+                        opacity: 1,
+                        width: 1,
+                    },
+                    move: {
+                        enable: true,
+                        speed: 6,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200,
+                        },
                     },
                 },
-            },
-            retina_detect: false,
-        });
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: false,
+                            mode: 'repulse',
+                        },
+                        onclick: {
+                            enable: false,
+                            mode: 'push',
+                        },
+                        resize: true,
+                    },
+                    modes: {
+                        grab: {
+                            distance: 400,
+                            line_linked: {
+                                opacity: 1,
+                            },
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3,
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4,
+                        },
+                        push: {
+                            particles_nb: 4,
+                        },
+                        remove: {
+                            particles_nb: 2,
+                        },
+                    },
+                },
+                retina_detect: false,
+            });
 
+        }
     }
 
 });
