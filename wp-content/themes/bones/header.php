@@ -60,18 +60,21 @@
 						<div class="col-xl-6 col-12 ">
 							<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 								<ul class="d-lg-flex d-none justify-content-between align-items-center m-0">
-									<li class="mr-5 d-none d-xl-block">
-										<a class="mb-0 text-dark" href="#">Institucional</a>
-									</li>
-									<li class="mr-5 d-none d-xl-block">
-										<a class="mb-0 text-dark" href="#">Blog</a>
-									</li>
-									<li class="mr-5 d-none d-xl-block">
-										<a class="mb-0 text-dark" href="#">Suporte Online</a>
-									</li>
-									<li class="avaliacao mr-xl-5 m-0">
-										<a class="mb-0 text-dark" href="#">Painel do Cliente</a>
-									</li>
+									<?php
+
+									if (have_rows('menu_superior', 5336)) :
+										while (have_rows('menu_superior', 5336)) : the_row();
+											$texto = get_sub_field('texto', 5336);
+											$link = get_sub_field('link', 5336);
+											$id = get_sub_field('id', 5336);
+									?>
+											<li class="mr-5 d-none d-xl-block">
+												<a class="mb-0 text-dark" id="<?= $id ?>" href="<?= $link ?>"><?= $texto ?></a>
+											</li>
+									<?php
+										endwhile;
+									endif;
+									?>
 								</ul>
 							</nav>
 						</div>
@@ -90,18 +93,20 @@
 				</p>
 				<nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 					<ul class="d-lg-flex d-none justify-content-between align-items-center m-0">
-						<li class="mr-5 d-none d-xl-block menu-item">
-							<a class="mb-0 text-dark" href="#">Computação em Nuvem</a>
-						</li>
-						<li class="mr-5 d-none d-xl-block menu-item">
-							<a class="mb-0 text-dark" href="#">Soluções em Nuvem</a>
-						</li>
-						<li class="mr-5 d-none d-xl-block menu-item">
-							<a class="mb-0 text-dark" href="#">Produtos em Nuvem</a>
-						</li>
-						<li class="avaliacao mr-xl-5 m-0 menu-item">
-							<a class="mb-0 text-dark" href="#">Atendimento</a>
-						</li>
+						<?php
+						if (have_rows('menu_inferior', 5336)) :
+							while (have_rows('menu_inferior', 5336)) : the_row();
+								$texto = get_sub_field('texto', 5336);
+								$link = get_sub_field('link', 5336);
+								$id = get_sub_field('id', 5336);
+						?>
+								<li class="mr-5 d-none d-xl-block menu-item">
+									<a class="mb-0 text-dark" id="<?= $id ?>" href="<?= $link ?>"><?= $texto ?></a>
+								</li>
+						<?php
+							endwhile;
+						endif;
+						?>
 					</ul>
 				</nav>
 			</div>

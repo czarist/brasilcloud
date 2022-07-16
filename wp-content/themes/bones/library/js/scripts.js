@@ -3,20 +3,48 @@
 jQuery(document).ready(function($) {
 
     // faz aparecer e desaparecer os blocos da home;
-    // "body.contains" verifica se os elementos de serviço da home existem, para não conflitar em outras páginas;
+    // "body.contains" verifica se os elementos existem, para não conflitar em outras páginas;
 
     let servicos_bloco = document.getElementsByClassName('servicos-bloco');
     let mais_servicos = document.getElementById('mais_servicos');
     let menos_servicos = document.getElementById('menos_servicos');
     let ajaxLoad = document.getElementById('ajaxLoad');
     let myparticles = document.getElementById('my-particles-1');
+    let open_menu = document.getElementById("open-menu");
+    let close_menu = document.getElementById("close-menu");
+    let menu_mobile = document.getElementById("menu-mobile");
+    let imgLogo = document.getElementById('imgLogo');
+    let header = document.getElementById("header");
+
+    //Breakpoints do swipper não estavam funcionando
+    let slidersCounter;
+    let slidersCounter2;
+
+    // links fixos 
+    const home_url = document.getElementById('home_url').value;
+    const get_template_directory_uri = document.getElementById('get_template_directory_uri').value;
 
     // constante para widht máximo
     const maxWidth = 800;
 
-    //Breakpoints do swipper não estavam funcionando
-    let slidersCounter;
-    let slidersCounter2
+
+
+    document.addEventListener("scroll", () => {
+
+        //transition for mobile (will work only in mobile)
+        if (window.pageYOffset === 0) {
+            header.classList.remove("header-menor");
+            header.classList.add("header-maior");
+            imgLogo.src = `${get_template_directory_uri}/library/images/logo.svg`;
+        } else {
+            header.classList.add("header-menor");
+            header.classList.remove("header-maior");
+            imgLogo.src = `${get_template_directory_uri}/library/images/logo2.svg`;
+        }
+
+    });
+
+
     if (window.outerWidth > maxWidth) {
         slidersCounter = 4;
         slidersCounter2 = 3;
@@ -24,6 +52,26 @@ jQuery(document).ready(function($) {
         slidersCounter = 1;
         slidersCounter2 = 1;
     }
+
+    // open menu mobile
+    open_menu.onclick = function openmenu() {
+        close_menu.classList.remove("d-none");
+        close_menu.classList.add("d-flex");
+        open_menu.classList.add("d-none");
+        open_menu.classList.remove("d-flex");
+        menu_mobile.classList.remove("d-none");
+        menu_mobile.classList.add("d-flex");
+    };
+
+    // close menu mobile
+    close_menu.onclick = function closemenu() {
+        open_menu.classList.remove("d-none");
+        open_menu.classList.add("d-flex");
+        close_menu.classList.add("d-none");
+        close_menu.classList.remove("d-flex");
+        menu_mobile.classList.add("d-none");
+        menu_mobile.classList.remove("d-flex");
+    };
 
     // esconde os ultimos blocos
 
@@ -36,8 +84,6 @@ jQuery(document).ready(function($) {
             servicos_bloco[a].classList.remove('d-none');
         }
     }
-
-
 
     //mostra mais publicações
 
@@ -114,31 +160,12 @@ jQuery(document).ready(function($) {
         );
     });
 
-    // open menu
-    document.getElementById("open-menu").onclick = function openmenu() {
-        document.getElementById("close-menu").classList.remove("d-none");
-        document.getElementById("close-menu").classList.add("d-flex");
-        document.getElementById("open-menu").classList.add("d-none");
-        document.getElementById("open-menu").classList.remove("d-flex");
-        document.getElementById("menu-mobile").classList.remove("d-none");
-        document.getElementById("menu-mobile").classList.add("d-flex");
-    };
 
-    // close menu
-    document.getElementById("close-menu").onclick = function closemenu() {
-        document.getElementById("open-menu").classList.remove("d-none");
-        document.getElementById("open-menu").classList.add("d-flex");
-        document.getElementById("close-menu").classList.add("d-none");
-        document.getElementById("close-menu").classList.remove("d-flex");
-        document.getElementById("menu-mobile").classList.add("d-none");
-        document.getElementById("menu-mobile").classList.remove("d-flex");
-    };
 
     const swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',
         centeredSlides: true,
         paginationClickable: true,
-        //spaceBetween: 5000,
         autoplay: {
             delay: 8000,
         },
@@ -148,17 +175,7 @@ jQuery(document).ready(function($) {
             clickable: true,
         },
         loop: true,
-        // breakpoints: {
-        //     // when window width is <= 320px
-        //     1024: {
-        //       slidesPerView: 2,
-        //     },
-        //     // when window width is <= 480px
-        //     768: {
-        //       slidesPerView: 1,
-        //       spaceBetween: 20
-        //     }
-        //   }
+
     });
 
     const swiper2 = new Swiper('.swiper2', {
@@ -214,12 +231,8 @@ jQuery(document).ready(function($) {
     }
 
     // particles home 
-
-
     if (document.body.contains(myparticles)) {
-
         // carrega somente em resoluções horizontais maiores que 800px
-
         if (window.outerWidth > maxWidth) {
             particlesJS(`my-particles-1`, {
                 particles: {

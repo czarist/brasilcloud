@@ -36,26 +36,31 @@
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
+										<?php
+										if (have_rows('links_rodape_bloco_1', 5336)) :
+											while (have_rows('links_rodape_bloco_1', 5336)) : the_row();
+												$titulo = get_sub_field('titulo', 5336);
+										?>
+												<ul>
+													<li><b><?= $titulo ?></b></li>
+													<?php
+													if (have_rows('links_rodape', 5336)) :
+														while (have_rows('links_rodape', 5336)) : the_row();
+															$link_rodape = get_sub_field('link_rodape', 5336);
+															$titulo_link = get_sub_field('titulo_link', 5336);
+
+													?>
+															<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+													<?php
+														endwhile;
+													endif;
+													?>
+												</ul>
+
+										<?php
+											endwhile;
+										endif;
+										?>
 									</nav>
 								</div>
 							</div>
@@ -64,21 +69,32 @@
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
+										<?php
+										if (have_rows('links_rodape_bloco_2', 5336)) :
+											while (have_rows('links_rodape_bloco_2', 5336)) : the_row();
+												$titulo = get_sub_field('titulo', 5336);
+										?>
+												<ul>
+													<li><b><?= $titulo ?></b></li>
+													<?php
+													if (have_rows('links_rodape', 5336)) :
+														while (have_rows('links_rodape', 5336)) : the_row();
+															$link_rodape = get_sub_field('link_rodape', 5336);
+															$titulo_link = get_sub_field('titulo_link', 5336);
+
+													?>
+															<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+													<?php
+														endwhile;
+													endif;
+													?>
+												</ul>
+
+										<?php
+											endwhile;
+										endif;
+										?>
+									</nav>
 									</nav>
 								</div>
 							</div>
@@ -87,16 +103,32 @@
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
+										<?php
+										if (have_rows('links_rodape_bloco_3', 5336)) :
+											while (have_rows('links_rodape_bloco_3', 5336)) : the_row();
+												$titulo = get_sub_field('titulo', 5336);
+										?>
+												<ul>
+													<li><b><?= $titulo ?></b></li>
+													<?php
+													if (have_rows('links_rodape', 5336)) :
+														while (have_rows('links_rodape', 5336)) : the_row();
+															$link_rodape = get_sub_field('link_rodape', 5336);
+															$titulo_link = get_sub_field('titulo_link', 5336);
+
+													?>
+															<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+													<?php
+														endwhile;
+													endif;
+													?>
+												</ul>
+
+										<?php
+											endwhile;
+										endif;
+										?>
+									</nav>
 									</nav>
 								</div>
 							</div>
@@ -105,19 +137,40 @@
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
-										<ul>
-											<li><b>Computação</b></li>
-											<li><a href="" class="text-white">Cloud Server</a></li>
-											<li><a href="" class="text-white">Cloud Server cPanel</a></li>
-										</ul>
-										<ul class="mt-5">
-											<li class="mb-2">Empresa Associada:</li>
-											<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/abrahosting.svg" alt="Empresa Associada"></li>
-										</ul>
-										<ul class="mt-5">
-											<li class="mb-2">Empresa Colaboradora :</li>
-											<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/uberhosting.svg" alt="Empresa Colaboradora"></li>
-										</ul>
+										<?php
+										if (have_rows('links_rodape_bloco_4', 5336)) :
+											while (have_rows('links_rodape_bloco_4', 5336)) : the_row();
+												$titulo = get_sub_field('titulo', 5336);
+										?>
+												<ul>
+													<li><b><?= $titulo ?></b></li>
+													<?php
+													if (have_rows('links_rodape', 5336)) :
+														while (have_rows('links_rodape', 5336)) : the_row();
+															$link_rodape = get_sub_field('link_rodape', 5336);
+															$titulo_link = get_sub_field('titulo_link', 5336);
+
+													?>
+															<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+													<?php
+														endwhile;
+													endif;
+													?>
+												</ul>
+
+										<?php
+											endwhile;
+										endif;
+										?>
+									</nav>
+									<ul class="mt-5">
+										<li class="mb-2">Empresa Associada:</li>
+										<li><img src="<?= get_field('empresa_associada', 5336) ?>" alt="Empresa Associada"></li>
+									</ul>
+									<ul class="mt-5">
+										<li class="mb-2">Empresa Colaboradora :</li>
+										<li><img src="<?= get_field('empresa_colaboradora', 5336) ?>" alt="Empresa Colaboradora"></li>
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -132,32 +185,32 @@
 						</div>
 						<div class="col-12 col-xl-3">
 							<p class="text-left text-white">
-								Brasil Cloud Serviços de Computação em Nuvem Ltda. CNPJ: 07.951.563/0002-95
+								<?= get_field('infos', 5336) ?>
 							</p>
 						</div>
 						<div class="col-12 col-xl-3">
 							<p class="text-left text-white">
-								Av. Floriano Peixoto, 1615 - Bairro Nossa Sra. Aparecida Uberlândia - Minas Gerais. CEP: 38400-702
+								<?= get_field('endereco', 5336) ?>
 							</p>
 						</div>
 						<div class="col-12 col-xl-3">
 							<div class="d-flex">
-								<a class="ml-2 mr-2" href="#">
+								<a class="ml-2 mr-2" href="<?= get_field('facebook', 5336) ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logofacebook.svg" alt="facebook">
 								</a>
-								<a class="ml-2 mr-2" href="#">
+								<a class="ml-2 mr-2" href="<?= get_field('linkedin', 5336) ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logolinkedin.svg" alt="linkedin">
 								</a>
-								<a class="ml-2 mr-2" href="#">
+								<a class="ml-2 mr-2" href="<?= get_field('twitter', 5336) ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logotwitter.svg" alt="twitter">
 								</a>
-								<a class="ml-2 mr-2" href="#">
+								<a class="ml-2 mr-2" href="<?= get_field('instagram', 5336) ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logoinstagram.svg" alt="instagram">
 								</a>
-								<a class="ml-2 mr-2" href="#">
+								<a class="ml-2 mr-2" href="<?= get_field('youtube', 5336) ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logoyoutube.svg" alt="youtube">
 								</a>
-								<a class="ml-2 mr-2" href="#">
+								<a class="ml-2 mr-2" href="https://api.whatsapp.com/send?phone=<?= get_field('whatsapp', 5336) ?>&text=Gostaria%20de%20fazer%20um%20or%C3%A7amento!">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logowhatsapp.svg" alt="whatsapp">
 								</a>
 							</div>

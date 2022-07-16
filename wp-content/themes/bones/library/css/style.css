@@ -1328,7 +1328,8 @@ div#newsletter input {
 }
 
 .botaoFakeAjax,
-.generalSaibaMais {
+.generalSaibaMais,
+section#form-trabalhe-conosco input[type="submit"] {
     background-image: linear-gradient(to left, #24CB9D, #007095);
     color: white;
     width: 200px !important;
@@ -1338,6 +1339,32 @@ div#newsletter input {
     border-radius: 50px;
     justify-content: center;
     align-items: center;
+}
+
+section#form-trabalhe-conosco input[type="submit"] {
+    min-width: 100%;
+}
+
+section#form-trabalhe-conosco textarea {
+    height: 214px;
+    padding-top: 10px;
+}
+
+.form-box-trabalhe-com-nos {
+    position: relative;
+    top: -240px;
+    background-color: white;
+    padding: 3pc;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px 0px #00000063;
+}
+
+section#form-trabalhe-conosco :where(input[type=text],
+input[type=tel],
+input[type=email],
+textarea) {
+    min-height: 50px;
+    border-radius: 20px;
 }
 
 .min-h-section {
@@ -1524,26 +1551,6 @@ body {
     color: #5c6b80;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-}
-
-
-/* LINK STYLES */
-
-a,
-a:visited {
-    color: #111111;
-}
-
-a:hover,
-a:focus,
-a:visited:hover,
-a:visited:focus {
-    color: #111111;
-}
-
-a:link,
-a:visited:link {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
 }
 
 
@@ -2407,6 +2414,9 @@ a.prev:before {
 /*Ipad*/
 
 @media only screen and (max-width: 1024px) {
+    .form-box-trabalhe-com-nos {
+        top: 0;
+    }
     .br-white {
         border-right: 0px solid transparent;
     }
