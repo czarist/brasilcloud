@@ -1031,12 +1031,17 @@ select {
     min-height: 645px;
 }
 
+div#compartilhe-posts img {
+    max-width: none;
+}
+
 #banners .swiper-pagination-bullet {
     background: #fff;
 }
 
 #blog-home .swiper-pagination-bullet,
-#blocos-infra .swiper-pagination-bullet {
+#blocos-infra .swiper-pagination-bullet,
+#blog-destaques .swiper-pagination-bullet {
     background: #212121;
 }
 
@@ -1046,7 +1051,8 @@ select {
 
 #banners .swiper-pagination-bullet-active,
 #blog-home .swiper-pagination-bullet-active,
-#blocos-infra .swiper-pagination-bullet-active {
+#blocos-infra .swiper-pagination-bullet-active,
+#blog-destaques .swiper-pagination-bullet-active {
     opacity: 1;
     background: #2BAFCF;
 }
@@ -1166,6 +1172,28 @@ div#the_outside {
     position: absolute;
     left: 50%;
     bottom: -13px;
+}
+
+.empresa {
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px -5px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.empresa p {
+    font-size: 13px;
+}
+
+.triangulo-menu a {
+    color: #2BAFCF !important;
+}
+
+.triangulo-menu::before {
+    transform: rotate(180deg) !important;
 }
 
 
@@ -1326,9 +1354,27 @@ input.input-pesquisa-blog {
     background-color: transparent;
 }
 
-section#banner h4 {
+a.text-blue,
+.text-blue {
+    color: #2BAFCF !important;
+    text-decoration: underline !important;
+    transition: 0.5s !important;
+}
+
+a.text-blue:hover,
+.text-blue:hover {
+    color: #24CB9D !important;
+    transition: 0.5s !important;
+}
+
+section#banner h4,
+.text-golden {
     text-transform: uppercase !important;
     color: #CF9D21 !important;
+}
+
+.text-golden:hover {
+    color: #2BAFCF !important;
 }
 
 input.botao-pesquisar-blog {
@@ -1356,7 +1402,7 @@ section#cats span:hover {
 }
 
 .banner-page {
-    height: 800px;
+    min-height: 800px;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -1365,7 +1411,7 @@ section#cats span:hover {
 }
 
 .banner-page-2 {
-    height: 400px;
+    min-height: 400px;
     position: relative;
     background-size: cover;
     background-position: center;
