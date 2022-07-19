@@ -1,6 +1,6 @@
 			<div id="newsletter" class="d-flex position-relative justify-content-center align-items-center">
 				<div class="filter-degrade"></div>
-				<div class="container p-0">
+				<div class="container">
 					<div class="row">
 						<div class="col-12">
 							<h1 class="text-center text-white mb-5">Inscreva-se na nossa Newsletter</h1>
@@ -30,9 +30,9 @@
 
 			<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 
-				<div id="inner-footer" class="container p-0">
+				<div id="inner-footer" class="container">
 					<div class="row pt-5">
-						<div class="col-12 col-xl-3 br-white">
+						<div class="col-6 col-xl-3 br-white">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -65,7 +65,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-xl-3 br-white">
+						<div class="col-6 col-xl-3 br-white">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -99,7 +99,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-xl-3 br-white">
+						<div class="col-6 col-xl-3 br-white">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -133,7 +133,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-xl-3">
+						<div class="col-6 col-xl-3">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">

@@ -25,9 +25,21 @@ function custom_excerpt_length($length)
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
-
 function bones_ahoy()
 {
+
+  //pesquisa de custom post-type
+  function template_chooser($template)
+  {
+    global $wp_query;
+    $post_type = get_query_var('post_type');
+    if ($wp_query->is_search && $post_type == 'blog') {
+      return locate_template('page-search-blog.php');
+    }
+    return $template;
+  }
+  add_filter('template_include', 'template_chooser');
+  //termina pesquisa
 
   //Allow editor style.
   add_editor_style(get_stylesheet_directory_uri() . '/library/css/editor-style.css');

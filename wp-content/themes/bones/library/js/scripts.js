@@ -5,7 +5,15 @@ jQuery(document).ready(function($) {
     // faz aparecer e desaparecer os blocos da home;
     // "body.contains" verifica se os elementos existem, para não conflitar em outras páginas;
 
+    //Breakpoints do swipper não estavam funcionando
+    let slidersCounter;
+    let slidersCounter2;
+
+    //elementos selecionados pelas classes
+    let menus_itens = document.getElementsByClassName('menu-item');
     let servicos_bloco = document.getElementsByClassName('servicos-bloco');
+
+    //elementos selecionados pelos ID's
     let mais_servicos = document.getElementById('mais_servicos');
     let menos_servicos = document.getElementById('menos_servicos');
     let ajaxLoad = document.getElementById('ajaxLoad');
@@ -15,10 +23,10 @@ jQuery(document).ready(function($) {
     let menu_mobile = document.getElementById("menu-mobile");
     let imgLogo = document.getElementById('imgLogo');
     let header = document.getElementById("header");
-
-    //Breakpoints do swipper não estavam funcionando
-    let slidersCounter;
-    let slidersCounter2;
+    let the_outside = document.getElementById('the_outside');
+    let hidden_menu = document.getElementById('hidden-menu');
+    let close_the_main_menu = document.getElementById('close-desktop-menu');
+    let InstitucionalMenu = document.getElementById('Institucional-menu');
 
     // links fixos 
     const home_url = document.getElementById('home_url').value;
@@ -27,23 +35,83 @@ jQuery(document).ready(function($) {
     // constante para widht máximo
     const maxWidth = 800;
 
+    // funções scroll do header
+    function mudaHeader() {
+        header.classList.remove("header-menor");
+        header.classList.add("header-maior");
+        imgLogo.src = `${get_template_directory_uri}/library/images/logo.svg`;
+    }
 
+    function voltaHeader() {
+        header.classList.add("header-menor");
+        header.classList.remove("header-maior");
+        imgLogo.src = `${get_template_directory_uri}/library/images/logo2.svg`;
+    }
 
+    //abre e fecha menu principal
+    function fechaMenus() {
+        if (!the_outside.classList.contains('d-none')) {
+            the_outside.classList.add('d-none');
+        }
+
+        if (!hidden_menu.classList.contains('d-none')) {
+            hidden_menu.classList.add('d-none');
+            hidden_menu.classList.remove('d-flex');
+        }
+
+        if (hidden_menu.classList.contains('sup-nav')) {
+            hidden_menu.classList.remove('sup-nav')
+        }
+
+        if (InstitucionalMenu.classList.contains('triangulo-menu')) {
+            InstitucionalMenu.classList.remove('triangulo-menu')
+        }
+
+        for (let j = 0; j < menus_itens.length; j++) {
+
+            if (menus_itens[j].classList.contains('triangulo-menu')) {
+                menus_itens[j].classList.remove('triangulo-menu');
+            }
+
+        }
+
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    function mostraMenus(id) {
+        if (the_outside.classList.contains('d-none')) {
+            the_outside.classList.remove('d-none');
+        }
+        if (hidden_menu.classList.contains('d-none')) {
+            hidden_menu.classList.remove('d-none');
+            hidden_menu.classList.add('d-flex');
+        }
+        for (let j = 0; j < menus_itens.length; j++) {
+            if (menus_itens[j].classList.contains('triangulo-menu')) {
+                menus_itens[j].classList.remove('triangulo-menu');
+            }
+        }
+        for (let q = 0; q < hidden_menu.querySelectorAll('.row').length; q++) {
+            let hidden_row = hidden_menu.querySelectorAll('.row')[q];
+            hidden_row.classList.add('d-none')
+            if (hidden_row.classList.contains(id)) {
+                hidden_row.classList.remove('d-none');
+            }
+        }
+
+        document.body.classList.add('overflow-hidden');
+    }
+
+    //evento scroll do header
     document.addEventListener("scroll", () => {
 
-        //transition for mobile (will work only in mobile)
         if (window.pageYOffset === 0) {
-            header.classList.remove("header-menor");
-            header.classList.add("header-maior");
-            imgLogo.src = `${get_template_directory_uri}/library/images/logo.svg`;
+            mudaHeader();
         } else {
-            header.classList.add("header-menor");
-            header.classList.remove("header-maior");
-            imgLogo.src = `${get_template_directory_uri}/library/images/logo2.svg`;
+            voltaHeader()
         }
 
     });
-
 
     if (window.outerWidth > maxWidth) {
         slidersCounter = 4;
@@ -72,6 +140,28 @@ jQuery(document).ready(function($) {
         menu_mobile.classList.add("d-none");
         menu_mobile.classList.remove("d-flex");
     };
+
+    for (let k = 0; k < menus_itens.length; k++) {
+        menus_itens[k].onclick = function() {
+            mostraMenus(this.id);
+            this.classList.add('triangulo-menu')
+        }
+    }
+
+    the_outside.onclick = function() {
+        fechaMenus();
+    }
+
+    close_the_main_menu.onclick = function() {
+        fechaMenus();
+    }
+
+    InstitucionalMenu.onclick = function() {
+        mostraMenus(this.id);
+        this.classList.add('triangulo-menu');
+        this.classList.add('position-relative');
+        hidden_menu.classList.add('sup-nav');
+    }
 
     // esconde os ultimos blocos
 
@@ -148,19 +238,17 @@ jQuery(document).ready(function($) {
 
     // Efeito de scroll demorado
 
-    $('a[href^="#"]').on("click", function(e) {
-        e.preventDefault();
-        let id = $(this).attr("href"),
-            targetOffset = $(id).offset().top;
+    // $('a[href^="#"]').on("click", function(e) {
+    //     e.preventDefault();
+    //     let id = $(this).attr("href"),
+    //         targetOffset = $(id).offset().top;
 
-        $("html, body").animate({
-                scrollTop: targetOffset - 100,
-            },
-            500
-        );
-    });
-
-
+    //     $("html, body").animate({
+    //             scrollTop: targetOffset - 100,
+    //         },
+    //         500
+    //     );
+    // });
 
     const swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',

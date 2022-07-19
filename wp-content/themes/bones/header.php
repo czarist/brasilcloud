@@ -54,7 +54,8 @@
 	<div id="container">
 		<header id="header" class="header header-maior w-100" role="banner" itemscope itemtype="https://schema.org/WPHeader">
 
-			<div id="sup-header" class="d-flex bg-c-DDDDDD">
+			<div id="sup-header" class="d-xl-flex d-none bg-c-DDDDDD">
+
 				<div class="container p-0">
 					<div class="row justify-content-end align-items-center pt-2 pb-2">
 						<div class="col-xl-6 col-12 ">
@@ -68,8 +69,8 @@
 											$link = get_sub_field('link', 5336);
 											$id = get_sub_field('id', 5336);
 									?>
-											<li class="mr-5 d-none d-xl-block">
-												<a class="mb-0 text-dark" id="<?= $id ?>" href="<?= $link ?>"><?= $texto ?></a>
+											<li class="mr-5 d-none d-xl-block" id="<?= $id ?>">
+												<a class="mb-0 text-dark" href="<?= $link ?>"><?= $texto ?></a>
 											</li>
 									<?php
 										endwhile;
@@ -82,10 +83,7 @@
 				</div>
 			</div>
 
-			<div id="inner-header" class="container d-flex justify-content-between align-items-center p-0">
-
-				<img id="open-menu" class="d-flex d-xl-none burguer" src="<?php echo get_template_directory_uri(); ?>/library/images/burguer.svg" alt="open-menu">
-				<img id="close-menu" class="d-none close_it" src="<?php echo get_template_directory_uri(); ?>/library/images/close.svg" alt="open-menu">
+			<div id="inner-header" class="container d-xl-flex d-none  justify-content-between align-items-center p-0">
 				<p id="logo" class="h1 d-none d-xl-block" itemscope itemtype="https://schema.org/Organization">
 					<a href="<?= home_url() ?>" rel="nofollow">
 						<img id="imgLogo" src="<?php echo get_template_directory_uri(); ?>/library/images/logo.svg" alt="logo">
@@ -100,8 +98,8 @@
 								$link = get_sub_field('link', 5336);
 								$id = get_sub_field('id', 5336);
 						?>
-								<li class="mr-5 d-none d-xl-block menu-item">
-									<a class="mb-0 text-dark" id="<?= $id ?>" href="<?= $link ?>"><?= $texto ?></a>
+								<li class="mr-5 d-none d-xl-block menu-item" id="<?= $id ?>">
+									<a class="mb-0 text-dark" href="<?= $link ?>"><?= $texto ?></a>
 								</li>
 						<?php
 							endwhile;
@@ -109,9 +107,200 @@
 						?>
 					</ul>
 				</nav>
+				<nav id="hidden-menu" class="d-none justify-content-center align-items-start " role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+					<div id="close-desktop-menu" class="mt-3 ml-3">
+						<i class="bi bi-x-circle h6 text-white"></i>
+					</div>
+					<div class="container mt-5">
+						<div class="row computacao-em-nuvem-menu d-none">
+							<?php
+							$args = array(
+								'post_type' => 'solucoes_e_produtos',
+								'post_status' => 'publish',
+								'posts_per_page' => -1,
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'tipo_servico',
+										'field' => 'slug',
+										'terms' => 'computacao-em-nuvem'
+									)
+								)
+							);
+
+							$loop = new WP_Query($args);
+							while ($loop->have_posts()) : $loop->the_post();
+							?>
+								<div class="col-4 mt-3">
+									<a href="<?php echo the_permalink() ?>">
+										<div>
+											<h6><?php the_title(); ?></h6>
+											<?php echo strip_tags(get_the_excerpt()); ?>
+										</div>
+									</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+							?>
+
+						</div>
+						<div class="row solucoes-em-nuvem-menu d-none">
+							<?php
+							$args = array(
+								'post_type' => 'solucoes_e_produtos',
+								'post_status' => 'publish',
+								'posts_per_page' => -1,
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'tipo_servico',
+										'field' => 'slug',
+										'terms' => 'solucoes-em-nuvem'
+									)
+								)
+							);
+
+							$loop = new WP_Query($args);
+							while ($loop->have_posts()) : $loop->the_post();
+							?>
+								<div class="col-4 mt-3">
+									<a href="<?php echo the_permalink() ?>">
+										<div>
+											<h6><?php the_title(); ?></h6>
+											<?php echo strip_tags(get_the_excerpt()); ?>
+										</div>
+									</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+							?>
+
+						</div>
+						<div class="row solucoes-em-nuvem-menu d-none">
+							<?php
+							$args = array(
+								'post_type' => 'solucoes_e_produtos',
+								'post_status' => 'publish',
+								'posts_per_page' => -1,
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'tipo_servico',
+										'field' => 'slug',
+										'terms' => 'solucoes-em-nuvem'
+									)
+								)
+							);
+
+							$loop = new WP_Query($args);
+							while ($loop->have_posts()) : $loop->the_post();
+							?>
+								<div class="col-4 mt-3">
+									<a href="<?php echo the_permalink() ?>">
+										<div>
+											<h6><?php the_title(); ?></h6>
+											<?php echo strip_tags(get_the_excerpt()); ?>
+										</div>
+									</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+							?>
+
+						</div>
+						<div class="row produtos-em-nuvem-menu d-none">
+							<?php
+							$args = array(
+								'post_type' => 'solucoes_e_produtos',
+								'post_status' => 'publish',
+								'posts_per_page' => -1,
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'tipo_servico',
+										'field' => 'slug',
+										'terms' => 'produtos-em-nuvem'
+									)
+								)
+							);
+
+							$loop = new WP_Query($args);
+							while ($loop->have_posts()) : $loop->the_post();
+							?>
+								<div class="col-4 mt-3">
+									<a href="<?php echo the_permalink() ?>">
+										<div>
+											<h6><?php the_title(); ?></h6>
+											<?php echo strip_tags(get_the_excerpt()); ?>
+										</div>
+									</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+							?>
+
+						</div>
+						<div class="row Institucional-menu d-none">
+							<?php
+							$args = array(
+								'post_type' => 'page',
+								'post_status' => 'publish',
+								'posts_per_page' => -1,
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'tipo_pagina',
+										'field' => 'slug',
+										'terms' => 'institucional'
+									)
+								)
+							);
+
+							$loop = new WP_Query($args);
+							while ($loop->have_posts()) : $loop->the_post();
+							?>
+								<div class="col-4 mt-3">
+									<a href="<?php echo the_permalink() ?>">
+										<div>
+											<h6><?php the_title(); ?></h6>
+											<?php echo strip_tags(get_the_excerpt()); ?>
+										</div>
+									</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+							?>
+
+						</div>
+					</div>
+				</nav>
+				<div id="the_outside" class="d-none"></div>
 			</div>
 
-			<nav id='menu-mobile' class="d-none" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
-			</nav>
+			<div id="mobile-header" class="d-xl-none d-flex justify-content-center flex-column align-items-center">
+				<p id="logo" class="h1 m-0 d-xl-none d-block" itemscope itemtype="https://schema.org/Organization">
+					<a href="<?= home_url() ?>" rel="nofollow">
+						<img id="imgLogoMobile" src="<?php echo get_template_directory_uri(); ?>/library/images/logo2.svg" alt="logo">
+					</a>
+				</p>
+
+				<img id="open-menu" class="d-flex d-xl-none burguer" src="<?php echo get_template_directory_uri(); ?>/library/images/burguer.svg" alt="open-menu">
+				<img id="close-menu" class="d-none close_it" src="<?php echo get_template_directory_uri(); ?>/library/images/close.svg" alt="close-menu">
+
+				<nav id='menu-mobile' role="navigation" class="d-none" itemscope itemtype="https://schema.org/SiteNavigationElement">
+
+
+				</nav>
+			</div>
 
 		</header>

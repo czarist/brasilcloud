@@ -15,6 +15,11 @@ summary {
     display: block;
 }
 
+body a {
+    outline: none !important;
+    text-decoration: none !important;
+}
+
 audio,
 canvas,
 video {
@@ -1005,6 +1010,10 @@ select {
 
 /* SWIPPER */
 
+.swiper-pagination {
+    z-index: 9 !important;
+}
+
 .swiper,
 .swiper2 {
     width: 100%;
@@ -1075,6 +1084,89 @@ select {
 
 
 /* ENDS BACKGROUND COLOR */
+
+nav#hidden-menu {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 13%;
+    height: auto;
+    min-height: 400px;
+    background-image: linear-gradient(to bottom, #007095, #2BAFCF);
+    z-index: 999;
+}
+
+nav#hidden-menu a {
+    transition: 0.5s;
+    color: white;
+    text-decoration: none;
+}
+
+nav#hidden-menu a:hover {
+    transition: 0.5s;
+    color: #CF9D21;
+}
+
+div#close-desktop-menu {
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+div#mobile-header {
+    height: 66px;
+    background-image: linear-gradient( #24CB9D, #007095);
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+section#banners {
+    overflow: hidden;
+}
+
+nav#menu-mobile {
+    height: auto;
+    min-height: 500px;
+    position: absolute;
+    background-image: linear-gradient( #007095, #24CB9D);
+    width: 100%;
+    top: 65px;
+}
+
+#open-menu,
+#close-menu {
+    position: absolute;
+    left: 0;
+    margin-left: 17px;
+    width: 35px;
+}
+
+div#the_outside {
+    width: 100%;
+    height: 60%;
+    position: fixed;
+    background-color: #00000063;
+    left: 0;
+    bottom: 0;
+    z-index: 998;
+}
+
+.triangulo-menu::after {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #007095;
+    position: absolute;
+    left: 50%;
+    bottom: -13px;
+}
 
 
 /* BLOG */
@@ -1220,13 +1312,60 @@ section#proposito h6 em span {
     color: #007095 !important;
 }
 
+.pesquisa-blog {
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px -2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+input.input-pesquisa-blog {
+    margin: 0;
+    background-color: transparent;
+}
+
 section#banner h4 {
     text-transform: uppercase !important;
     color: #CF9D21 !important;
 }
 
+input.botao-pesquisar-blog {
+    text-align: center;
+    border: 0;
+    width: 50px;
+    height: 50px;
+    color: transparent;
+    background-color: transparent;
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-image: url('../images/lupa-azul.svg');
+}
+
+section#cats span {
+    color: #24CB9D;
+    margin-right: 10px;
+    transition: 0.5s;
+}
+
+section#cats span:hover {
+    color: #0b86a5;
+    transition: 0.5s;
+}
+
 .banner-page {
     height: 800px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.banner-page-2 {
+    height: 400px;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -1305,6 +1444,18 @@ a.excerpt-read-more {
     display: none;
 }
 
+a.prev.page-numbers {
+    display: none;
+}
+
+a.next.page-numbers {
+    display: none;
+}
+
+a.next.page-numbers {
+    display: none;
+}
+
 div#newsletter {
     background-color: black;
     background-image: url('../images/fundonews.png');
@@ -1314,6 +1465,8 @@ div#newsletter {
     background-attachment: fixed;
     height: auto;
     min-height: 400px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 div#newsletter input {
@@ -1777,8 +1930,57 @@ h5,
     letter-spacing: 2px;
 }
 
+body {
+    padding-top: 143px;
+}
+
 
 /* HEADER STYLES */
+
+#header {
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    top: 0;
+}
+
+.sup-nav {
+    top: 45px !important;
+}
+
+nav#hidden-menu .row {
+    overflow: auto;
+    max-height: 360px;
+    margin-bottom: 2pc;
+}
+
+#header li a:hover {
+    color: #CF9D21 !important;
+    transition: 0.5s;
+}
+
+.header-menor {
+    max-height: 125px;
+    transition: 0.5s;
+    background-image: linear-gradient( #24CB9D, #007095);
+}
+
+.header-menor img#imgLogo {
+    position: relative;
+    top: -30px;
+}
+
+.header-menor li a {
+    color: white !important;
+}
+
+.header-maior {
+    transition: 0.5s;
+}
+
+.header-menor div#sup-header {
+    background-color: transparent;
+}
 
 .menu-item {
     position: relative;
@@ -2414,6 +2616,12 @@ a.prev:before {
 /*Ipad*/
 
 @media only screen and (max-width: 1024px) {
+    body {
+        padding-top: 0;
+    }
+    #header {
+        position: relative;
+    }
     .form-box-trabalhe-com-nos {
         top: 0;
     }
