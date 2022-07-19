@@ -28,6 +28,15 @@ add_filter('excerpt_length', 'custom_excerpt_length', 999);
 function bones_ahoy()
 {
 
+  function get_the_cats()
+  {
+    $categorias = get_the_category();
+    foreach ($categorias as $categoria) {
+      echo '<a href="' . home_url() . '/category/' . $categoria->slug . '" class="cat-blog">' . $categoria->name . '</a> ';
+    }
+  }
+
+
   //pesquisa de custom post-type
   function template_chooser($template)
   {

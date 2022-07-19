@@ -60,39 +60,10 @@
 					<section id="blog-intern" class="mb-0 min-h-section">
 						<div class="container">
 							<div class="row mb-4 mt-4">
-								<?php
-								function get_the_cats()
-								{
-									$categorias = get_the_category();
-									foreach ($categorias as $categoria) {
-										echo '<a href="#" class="cat-blog">' . $categoria->name . '</a>,';
-									}
-								}
-								if (have_posts()) : while (have_posts()) : the_post();
-
-										$image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
-										if (!$image) {
-											// se não houver imagem principal selecionada, o IF define essa imagem como capa;
-											$image = get_template_directory_uri() . "/library/images/blog-provisorio.jpg";
-										}	?>
-
+								<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 										<div class="col-12 col-xl-4 mt-2 mb-2 d-flex justify-content-center align-items-center">
-											<div class="box-blog position-relative ">
-												<img class="p-0 m-0" height="230" width="350" src="<?= $image ?>" alt="img-blog">
-												<div class="row pl-3 pr-3 mt-2">
-													<div class="col-12">
-														<?php get_the_cats() ?>
-													</div>
-												</div>
-												<h6 class="text-black p-3"><?php the_title(); ?></h6>
-												<div class="pl-3 pr-3">
-													<?php the_excerpt(); ?>
-												</div>
-												<a class="ler-mais-blog" href="<?php echo get_permalink(); ?>"><b>Ler mais</b></a>
-											</div>
+											<?php require(dirname(__FILE__) . "/template-parts/posts/post-blog.php"); ?>
 										</div>
-
 								<?php endwhile;
 								endif; ?>
 							</div>
