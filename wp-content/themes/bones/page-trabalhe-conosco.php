@@ -35,9 +35,9 @@
                                 </div>
                             </section>
 
-                            <section id="form-trabalhe-conosco" class="mb-5 mt-5 p-5 p-xl-0">
+                            <section id="form-trabalhe-conosco" class="mb-5 mt-5 p-0">
                                 <div class="container">
-                                    <div class="row min-h-section form-box-trabalhe-com-nos">
+                                    <div class="row form-box-trabalhe-com-nos">
                                         <div class="col-12  ">
                                             <?= get_field('texto_trabalhe_conosco', 5329) ?>
                                         </div>

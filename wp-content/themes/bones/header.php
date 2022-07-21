@@ -282,6 +282,40 @@
 							?>
 
 						</div>
+						<div class="row Atendimento-menu d-none">
+							<?php
+							$args = array(
+								'post_type' => 'page',
+								'post_status' => 'publish',
+								'posts_per_page' => -1,
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'tipo_pagina',
+										'field' => 'slug',
+										'terms' => 'atendimento'
+									)
+								)
+							);
+
+							$loop = new WP_Query($args);
+							while ($loop->have_posts()) : $loop->the_post();
+							?>
+								<div class="col-4 mt-3">
+									<a href="<?php echo the_permalink() ?>">
+										<div>
+											<h6><?php the_title(); ?></h6>
+											<?php echo strip_tags(get_the_excerpt()); ?>
+										</div>
+									</a>
+								</div>
+							<?php
+							endwhile;
+							wp_reset_postdata();
+							?>
+
+						</div>
 					</div>
 				</nav>
 				<div id="the_outside" class="d-none"></div>
