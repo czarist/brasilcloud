@@ -77,7 +77,7 @@
 										$args = array(
 											'post_type' => 'blog',
 											'post_status' => 'publish',
-											'posts_per_page' => -1,
+											'posts_per_page' => 7,
 											'orderby' => 'title',
 											'order' => 'ASC',
 										);
@@ -106,10 +106,15 @@
 							</section>
 							<section id="blog-intern" class="mb-0 min-h-section">
 								<div class="container">
+									<div class="row">
+										<div id="titles-blog-home" class="col-12 text-center text-dark mt-5 mb-5">
+											<h2>Últimos posts</h2>
+										</div>
+									</div>
 									<div class="row mb-4 mt-4">
 										<?php
 										$big = 999999999;
-										$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+										$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) :1 ;
 										$the_argo = array(
 											'post_type' => 'blog',
 											'post_status' => 'publish',

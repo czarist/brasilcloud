@@ -44,6 +44,10 @@ function bones_ahoy()
     $post_type = get_query_var('post_type');
     if ($wp_query->is_search && $post_type == 'blog') {
       return locate_template('page-search-blog.php');
+    } else if (($wp_query->is_search && $post_type == 'duvida')) {
+      return locate_template('page-search-duvida.php');
+    } else if (($wp_query->is_search && $post_type == 'tutorial')) {
+      return locate_template('page-search-tutorial.php');
     }
     return $template;
   }

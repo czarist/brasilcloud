@@ -1152,11 +1152,15 @@ nav#menu-mobile {
     width: 35px;
 }
 
+.cdp-copy-alert-success {
+    display: none !important;
+}
+
 div#the_outside {
     width: 100%;
-    height: 60%;
+    height: 100%;
     position: fixed;
-    background-color: #00000063;
+    background-color: transparent;
     left: 0;
     bottom: 0;
     z-index: 998;
@@ -1368,7 +1372,8 @@ section#proposito h6 em span {
     color: #007095 !important;
 }
 
-.pesquisa-blog {
+.pesquisa-blog,
+.pesquisa-duvida {
     border-radius: 50px;
     box-shadow: 0px 0px 5px -2px black;
     display: flex;
@@ -1377,9 +1382,43 @@ section#proposito h6 em span {
     overflow: hidden;
 }
 
+.duvida {
+    box-shadow: 0px 0px 5px -2px;
+    border-radius: 10px;
+    height: 50px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.duvida i {
+    color: #2BAFCF;
+    transition: 0.5s;
+}
+
+.duvida:hover {
+    background-color: #007095;
+}
+
+.duvida:hover i,
+.duvida:hover p {
+    color: white;
+    transition: 0.5s;
+}
+
 input.input-pesquisa-blog {
     margin: 0;
     background-color: transparent;
+}
+
+select.categoria-duvida {
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px -2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 50px;
+    background-color: white;
 }
 
 a.text-blue,
@@ -2056,21 +2095,36 @@ nav#hidden-menu .row {
     background-color: transparent;
 }
 
+#suporte-online-menu,
+#painel-do-cliente,
 .menu-item {
     position: relative;
 }
 
-.menu-item::before {
+#suporte-online-menu::before,
+.menu-item::before,
+#painel-do-cliente::before {
     content: " ";
     position: absolute;
     width: 20px;
     height: 20px;
-    background-image: url('../images/baixo.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 60%;
     right: -20px;
     top: 3px;
+}
+
+.menu-item::before {
+    background-image: url('../images/baixo.svg');
+}
+
+#suporte-online-menu::before {
+    background-image: url('../images/balao.svg');
+}
+
+#painel-do-cliente::before {
+    background-image: url('../images/pessoa.svg');
 }
 
 .header {}

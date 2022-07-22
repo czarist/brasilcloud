@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
     let hidden_menu = document.getElementById('hidden-menu');
     let close_the_main_menu = document.getElementById('close-desktop-menu');
     let InstitucionalMenu = document.getElementById('Institucional-menu');
+    let duvidas_select = document.getElementById('duvidas-select');
 
     // links fixos 
     const home_url = document.getElementById('home_url').value;
@@ -34,6 +35,9 @@ jQuery(document).ready(function($) {
 
     // constante para widht máximo
     const maxWidth = 800;
+
+
+    // FUNÇÕES
 
     // funções scroll do header
     function mudaHeader() {
@@ -47,6 +51,32 @@ jQuery(document).ready(function($) {
         header.classList.remove("header-maior");
         imgLogo.src = `${get_template_directory_uri}/library/images/logo2.svg`;
     }
+
+    //direciona para o link de categoria
+    function handleSelect(elm) {
+        window.location = elm.value;
+    }
+
+    // funcões que abrem e fecham menu do mobile
+    function openmenu() {
+        close_menu.classList.remove("d-none");
+        close_menu.classList.add("d-flex");
+        open_menu.classList.add("d-none");
+        open_menu.classList.remove("d-flex");
+        menu_mobile.classList.remove("d-none");
+        menu_mobile.classList.add("d-flex");
+    }
+
+    function closemenu() {
+        open_menu.classList.remove("d-none");
+        open_menu.classList.add("d-flex");
+        close_menu.classList.add("d-none");
+        close_menu.classList.remove("d-flex");
+        menu_mobile.classList.add("d-none");
+        menu_mobile.classList.remove("d-flex");
+    }
+
+    // // // 
 
     //abre e fecha menu principal
     function fechaMenus() {
@@ -102,6 +132,10 @@ jQuery(document).ready(function($) {
         document.body.classList.add('overflow-hidden');
     }
 
+    // FIM DAS FUNÇÕES
+
+    // EVENTOS 
+
     //evento scroll do header
     document.addEventListener("scroll", () => {
 
@@ -122,25 +156,16 @@ jQuery(document).ready(function($) {
     }
 
     // open menu mobile
-    open_menu.onclick = function openmenu() {
-        close_menu.classList.remove("d-none");
-        close_menu.classList.add("d-flex");
-        open_menu.classList.add("d-none");
-        open_menu.classList.remove("d-flex");
-        menu_mobile.classList.remove("d-none");
-        menu_mobile.classList.add("d-flex");
+    open_menu.onclick = function() {
+        openmenu();
     };
 
     // close menu mobile
-    close_menu.onclick = function closemenu() {
-        open_menu.classList.remove("d-none");
-        open_menu.classList.add("d-flex");
-        close_menu.classList.add("d-none");
-        close_menu.classList.remove("d-flex");
-        menu_mobile.classList.add("d-none");
-        menu_mobile.classList.remove("d-flex");
+    close_menu.onclick = function() {
+        closemenu()
     };
 
+    //abre o menu do header
     for (let k = 0; k < menus_itens.length; k++) {
         menus_itens[k].onclick = function() {
             mostraMenus(this.id);
@@ -174,6 +199,15 @@ jQuery(document).ready(function($) {
             servicos_bloco[a].classList.remove('d-none');
         }
     }
+
+    if (document.body.contains(duvidas_select)) {
+        duvidas_select.onchange = function() {
+            handleSelect(this);
+        }
+    }
+
+    // FIM DOS EVENTOS 
+
 
     //mostra mais publicações
 
@@ -236,20 +270,6 @@ jQuery(document).ready(function($) {
         },
     });
 
-    // Efeito de scroll demorado
-
-    // $('a[href^="#"]').on("click", function(e) {
-    //     e.preventDefault();
-    //     let id = $(this).attr("href"),
-    //         targetOffset = $(id).offset().top;
-
-    //     $("html, body").animate({
-    //             scrollTop: targetOffset - 100,
-    //         },
-    //         500
-    //     );
-    // });
-
     const swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',
         centeredSlides: true,
@@ -283,6 +303,8 @@ jQuery(document).ready(function($) {
             clickable: true,
         }
     });
+
+
 
     function consultar_registro() {
         var dominio = $('#dominio').val();
