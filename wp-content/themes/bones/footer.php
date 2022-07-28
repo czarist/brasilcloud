@@ -95,7 +95,6 @@
 										endif;
 										?>
 									</nav>
-									</nav>
 								</div>
 							</div>
 						</div>
@@ -128,7 +127,6 @@
 											endwhile;
 										endif;
 										?>
-									</nav>
 									</nav>
 								</div>
 							</div>

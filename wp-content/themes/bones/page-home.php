@@ -72,7 +72,7 @@
 
 										<div class="row servicos-bloco p-4 d-none col-12 col-xl-4 justify-content-center align-items-center">
 											<div class="col-12 the_servico d-flex justify-content-center align-items-center">
-												<div class="row">
+												<div class="row w-100">
 													<div class="col-12">
 														<?php include 'library/images/servico_fundo.svg'; ?>
 

@@ -332,8 +332,117 @@
 				<img id="close-menu" class="d-none close_it" src="<?php echo get_template_directory_uri(); ?>/library/images/close.svg" alt="close-menu">
 
 				<nav id='menu-mobile' role="navigation" class="d-none" itemscope itemtype="https://schema.org/SiteNavigationElement">
+					<div class="row ml-2 mr-2">
+						<div class="col-6 mt-5">
+							<nav role="navigation">
+								<?php
+								if (have_rows('links_rodape_bloco_1', 5336)) :
+									while (have_rows('links_rodape_bloco_1', 5336)) : the_row();
+										$titulo = get_sub_field('titulo', 5336);
+								?>
+										<ul class="text-left">
+											<li><b class="text-white"><?= $titulo ?></b></li>
+											<?php
+											if (have_rows('links_rodape', 5336)) :
+												while (have_rows('links_rodape', 5336)) : the_row();
+													$link_rodape = get_sub_field('link_rodape', 5336);
+													$titulo_link = get_sub_field('titulo_link', 5336);
 
+											?>
+													<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+											<?php
+												endwhile;
+											endif;
+											?>
+										</ul>
 
+								<?php
+									endwhile;
+								endif;
+								?>
+								<?php
+								if (have_rows('links_rodape_bloco_3', 5336)) :
+									while (have_rows('links_rodape_bloco_3', 5336)) : the_row();
+										$titulo = get_sub_field('titulo', 5336);
+								?>
+										<ul class="text-left">
+											<li><b class="text-white"><?= $titulo ?></b></li>
+											<?php
+											if (have_rows('links_rodape', 5336)) :
+												while (have_rows('links_rodape', 5336)) : the_row();
+													$link_rodape = get_sub_field('link_rodape', 5336);
+													$titulo_link = get_sub_field('titulo_link', 5336);
+
+											?>
+													<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+											<?php
+												endwhile;
+											endif;
+											?>
+										</ul>
+
+								<?php
+									endwhile;
+								endif;
+								?>
+							</nav>
+						</div>
+						<div class="col-6 mt-5">
+							<nav role="navigation">
+								<?php
+								if (have_rows('links_rodape_bloco_2', 5336)) :
+									while (have_rows('links_rodape_bloco_2', 5336)) : the_row();
+										$titulo = get_sub_field('titulo', 5336);
+								?>
+										<ul class="text-left">
+											<li><b class="text-white"><?= $titulo ?></b></li>
+											<?php
+											if (have_rows('links_rodape', 5336)) :
+												while (have_rows('links_rodape', 5336)) : the_row();
+													$link_rodape = get_sub_field('link_rodape', 5336);
+													$titulo_link = get_sub_field('titulo_link', 5336);
+
+											?>
+													<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+											<?php
+												endwhile;
+											endif;
+											?>
+										</ul>
+
+								<?php
+									endwhile;
+								endif;
+								?>
+								<?php
+								if (have_rows('links_rodape_bloco_4', 5336)) :
+									while (have_rows('links_rodape_bloco_4', 5336)) : the_row();
+										$titulo = get_sub_field('titulo', 5336);
+								?>
+										<ul class="text-left">
+											<li><b class="text-white"><?= $titulo ?></b></li>
+											<?php
+											if (have_rows('links_rodape', 5336)) :
+												while (have_rows('links_rodape', 5336)) : the_row();
+													$link_rodape = get_sub_field('link_rodape', 5336);
+													$titulo_link = get_sub_field('titulo_link', 5336);
+
+											?>
+													<li><a href="<?= $link_rodape ?>" class="text-white"><?= $titulo_link ?></a></li>
+											<?php
+												endwhile;
+											endif;
+											?>
+										</ul>
+
+								<?php
+									endwhile;
+								endif;
+								?>
+							</nav>
+						</div>
+
+					</div>
 				</nav>
 			</div>
 
