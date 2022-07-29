@@ -12,6 +12,8 @@ jQuery(document).ready(function($) {
     //elementos selecionados pelas classes
     let menus_itens = document.getElementsByClassName('menu-item');
     let servicos_bloco = document.getElementsByClassName('servicos-bloco');
+    let the_rangers = document.getElementsByClassName('the-rangers');
+    let the_ranged = document.getElementsByClassName('the_ranged');
 
     //elementos selecionados pelos ID's
     let mais_servicos = document.getElementById('mais_servicos');
@@ -35,7 +37,6 @@ jQuery(document).ready(function($) {
 
     // constante para widht máximo
     const maxWidth = 800;
-
 
     // FUNÇÕES
 
@@ -75,8 +76,6 @@ jQuery(document).ready(function($) {
         menu_mobile.classList.add("d-none");
         menu_mobile.classList.remove("d-flex");
     }
-
-    // // // 
 
     //abre e fecha menu principal
     function fechaMenus() {
@@ -261,6 +260,34 @@ jQuery(document).ready(function($) {
     }
 
     // fim da parte dos serviços da home
+
+    // abas dos planos
+    if (document.body.contains(the_rangers[0])) {
+
+        for (let a = 0; a < the_rangers.length; a++) {
+            the_rangers[a].onclick = function() {
+
+                for (let i = 0; i < the_rangers.length; i++) {
+                    the_rangers[i].classList.remove('activated');
+                }
+
+                for (let q = 0; q < the_ranged.length; q++) {
+
+                    if (the_ranged[q].classList.contains(this.id)) {
+                        the_ranged[q].classList.add('d-flex')
+                        the_ranged[q].classList.remove('d-none')
+                    } else if (!the_ranged[q].classList.contains(this.id)) {
+                        the_ranged[q].classList.remove('d-flex')
+                        the_ranged[q].classList.add('d-none')
+                    }
+
+                }
+
+                this.classList.add('activated');
+            }
+        }
+    }
+    // fim abas dos planos
 
     // inicia bilbioteca do AOS
 
