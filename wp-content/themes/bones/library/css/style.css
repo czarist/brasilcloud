@@ -1131,8 +1131,59 @@ div#mobile-header {
     top: 0;
 }
 
+section#cabecario-servico {
+    background-color: white;
+    position: relative;
+    top: -165px;
+    border-radius: 10px;
+}
+
+section#cabecario-servico h1 {
+    margin-bottom: 5pc;
+    position: relative;
+}
+
 section#banners {
     overflow: hidden;
+}
+
+section#cabecario-servico h1::before {
+    content: ' ';
+    width: 100px;
+    height: 7px;
+    background-color: #24CB9D;
+    position: absolute;
+    bottom: -25px;
+    left: 44%;
+    border-radius: 20px;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.bt-item {
+    position: relative;
+}
+
+.bt-item::after {
+    content: ' ';
+    width: 100%;
+    height: 1px;
+    background-color: #0000001c;
+    position: absolute;
+    max-width: 100%;
+    left: 0;
+    bottom: -5px;
+}
+
+.barra-verde-2 {
+    width: 70px;
+    height: 5px;
+    background-color: #24CB9D;
+    border-radius: 10px;
+    margin: auto !important;
+    margin-bottom: 10px !important;
 }
 
 nav#menu-mobile {
@@ -1143,6 +1194,16 @@ nav#menu-mobile {
     top: 65px;
     max-height: 500px;
     overflow: auto;
+}
+
+.coluna_plano {
+    box-shadow: 0px 0px 5px -2px;
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+    min-height: 500px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 #open-menu,
