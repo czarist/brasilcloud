@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
     let servicos_bloco = document.getElementsByClassName('servicos-bloco');
     let the_rangers = document.getElementsByClassName('the-rangers');
     let the_ranged = document.getElementsByClassName('the_ranged');
+    let contratar_plano = document.getElementsByClassName('contratar-plano');
 
     //elementos selecionados pelos ID's
     let mais_servicos = document.getElementById('mais_servicos');
@@ -30,6 +31,8 @@ jQuery(document).ready(function($) {
     let close_the_main_menu = document.getElementById('close-desktop-menu');
     let InstitucionalMenu = document.getElementById('Institucional-menu');
     let duvidas_select = document.getElementById('duvidas-select');
+    let content_form_servico = document.getElementById('content-form-servico');
+    let fechaForm = document.getElementById('fechaForm');
 
     // links fixos 
     const home_url = document.getElementById('home_url').value;
@@ -287,9 +290,27 @@ jQuery(document).ready(function($) {
                 this.classList.add('activated');
             }
         }
+
     }
 
     // fim abas dos planos
+
+    // abre form de contratar serviço
+
+    if (document.body.contains(contratar_plano[0])) {
+        for (let u = 0; u < contratar_plano.length; u++) {
+            contratar_plano[u].onclick = function() {
+                content_form_servico.classList.remove('d-none')
+                content_form_servico.classList.add('d-flex')
+            }
+        }
+        fechaForm.onclick = function() {
+            content_form_servico.classList.add('d-none')
+            content_form_servico.classList.remove('d-flex')
+        }
+    }
+
+    // fim abre form de contratar serviço
 
     // inicia bilbioteca do AOS
 
