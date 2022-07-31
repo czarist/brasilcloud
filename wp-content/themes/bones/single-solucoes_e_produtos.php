@@ -8,6 +8,7 @@
 
             <?php if (have_posts()) : while (have_posts()) : the_post();
                     $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                    $tipo_cabecario = get_field('tipo_cabecario', $post->ID);
 
                     if (!$image) {
                         // se não houver imagem principal selecionada, o IF define essa imagem como capa;
@@ -37,28 +38,24 @@
                                     </div>
                                 </div>
                                 <?php
-                                $tipo_cabecario = get_field('tipo_cabecario', $post->ID);
 
                                 if ($tipo_cabecario == 'Plano com Abas') {
                                     include_once 'template-parts/produtos_solucoes/planos_com_abas.php';
                                 } else if ($tipo_cabecario == 'Planos') {
-                                    echo 'Planos';
+                                    include_once 'template-parts/produtos_solucoes/planos_simples.php';
                                 } else if ($tipo_cabecario == 'Formulário') {
-                                    echo 'Formulário';
+                                    include_once 'template-parts/produtos_solucoes/tipo_formulario.php';
                                 } else if ($tipo_cabecario == 'Registro de Domínio') {
-                                    echo 'Registro de Domínio';
-                                } ?>
+                                    include_once 'template-parts/produtos_solucoes/registro_dominio.php';
+                                }
+
+                                ?>
                             </section>
-
                     </article>
-
             <?php endwhile;
             endif; ?>
-
         </main>
-
     </div>
-
 </div>
 
 <?php get_footer(); ?>

@@ -262,6 +262,7 @@ jQuery(document).ready(function($) {
     // fim da parte dos serviços da home
 
     // abas dos planos
+
     if (document.body.contains(the_rangers[0])) {
 
         for (let a = 0; a < the_rangers.length; a++) {
@@ -287,6 +288,7 @@ jQuery(document).ready(function($) {
             }
         }
     }
+
     // fim abas dos planos
 
     // inicia bilbioteca do AOS
@@ -296,6 +298,8 @@ jQuery(document).ready(function($) {
             return window.innerWidth < maxWidth;
         },
     });
+
+    // swipers
 
     const swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',
