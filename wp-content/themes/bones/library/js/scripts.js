@@ -33,6 +33,7 @@ jQuery(document).ready(function($) {
     let duvidas_select = document.getElementById('duvidas-select');
     let content_form_servico = document.getElementById('content-form-servico');
     let fechaForm = document.getElementById('fechaForm');
+    let btn_registro = document.getElementById('btn_registro');
 
     // links fixos 
     const home_url = document.getElementById('home_url').value;
@@ -356,7 +357,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-
+    //pesquisa registro
 
     function consultar_registro() {
         var dominio = $('#dominio').val();
@@ -366,7 +367,7 @@ jQuery(document).ready(function($) {
             $('#btn_registro').addClass('disabled').html('Aguarde...');
             $('#resultado_registro').prepend('<tr class="consultando_registro"><td colspan="3">Consultando Registro, Pode levar alguns segundos...</td></tr>');
             $.ajax({
-                url: "https://brasilcloud.com.br/whois/?dominio[]=" + dominio + extensao,
+                url: "/whois/?dominio[]=" + dominio + extensao,
                 dataType: "json",
                 error: function() {
                     consultar_registro();
@@ -389,8 +390,16 @@ jQuery(document).ready(function($) {
                     $('#btn_registro').removeClass('disabled').html('<i class="fi-zoom-in"> </i> Pesquisar');
                 }
             });
+        } else {
+            alert('digite um dominio!')
         }
     }
+
+    btn_registro.onclick = function() {
+        consultar_registro();
+    }
+
+    // fim pesquisa registro
 
     // particles home 
     if (document.body.contains(myparticles)) {
@@ -510,4 +519,4 @@ jQuery(document).ready(function($) {
         }
     }
 
-});
+})
