@@ -42,11 +42,11 @@
 
                                 <div class="barra-verde-2"></div>
 
-                                <?php if ($texto_verde !== "") { ?>
+                                <?php if ($texto_verde) { ?>
                                     <h6 class="text-center text-green mb-4"> <b><?= $texto_verde ?></b> </h6>
                                 <?php } ?>
 
-                                <?php if ($uso_ideal !== "") { ?>
+                                <?php if ($uso_ideal) { ?>
                                     <p class="fs-10">
                                         <b class="text-golden">uso ideal:</b><?= $uso_ideal ?>
                                     </p>
@@ -63,7 +63,7 @@
                                     endwhile;
                                 endif; ?>
 
-                                <?php if ($texto_dourado !== "") { ?>
+                                <?php if ($texto_dourado) { ?>
                                     <p class="text-golden fs-10 text-center"><?= $texto_dourado ?></p>
                                 <?php } ?>
 

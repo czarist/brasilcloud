@@ -1010,6 +1010,42 @@ select {
 
 /* SWIPPER */
 
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+    z-index: 9 !important;
+}
+
+#galeria-painel .swiperPainel {
+    overflow: hidden;
+}
+
+#galeria-painel .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#galeria-painel .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .swiper-pagination {
     z-index: 9 !important;
 }
@@ -1041,20 +1077,36 @@ div#compartilhe-posts img {
 
 #blog-home .swiper-pagination-bullet,
 #blocos-infra .swiper-pagination-bullet,
+#diferenciais .swiper-pagination-bullet,
+#caracteristicas .swiper-pagination-bullet,
 #blog-destaques .swiper-pagination-bullet {
     background: #212121;
 }
 
-#blocos-infra .swiper-pagination-bullet {
+#blocos-infra .swiper-pagination-bullet,
+#diferenciais .swiper-pagination-bullet,
+#caracteristicas .swiper-pagination-bullet {
     margin-right: 10px;
 }
 
 #banners .swiper-pagination-bullet-active,
 #blog-home .swiper-pagination-bullet-active,
 #blocos-infra .swiper-pagination-bullet-active,
+#diferenciais .swiper-pagination-bullet-active,
+#caracteristicas .swiper-pagination-bullet-active,
 #blog-destaques .swiper-pagination-bullet-active {
     opacity: 1;
     background: #2BAFCF;
+}
+
+section#diferenciais .container,
+#caracteristicas .container {
+    overflow: hidden;
+}
+
+#diferenciais,
+#parceiros-tecnologicos {
+    background-color: #FBFBFB;
 }
 
 #banners .swiper-wrapper {
@@ -1090,6 +1142,37 @@ div#compartilhe-posts img {
 
 
 /* ENDS BACKGROUND COLOR */
+
+.pergunta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pergunta i {
+    cursor: pointer;
+}
+
+#secao-azul {
+    background-image: url('../images/secaoazul.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    min-height: 300px;
+}
+
+a.golden-link {
+    height: 50px;
+    background-color: #CF9D21;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    border-radius: 50px;
+    margin-top: 2pc;
+}
 
 nav#hidden-menu {
     position: fixed;
@@ -1779,6 +1862,11 @@ section#form-trabalhe-conosco input[type="submit"],
     border-radius: 50px;
     justify-content: center;
     align-items: center;
+}
+
+.box-pergunta {
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px -1px #00000082;
 }
 
 section#form-trabalhe-conosco input[type="submit"],

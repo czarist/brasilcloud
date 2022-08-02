@@ -15,6 +15,7 @@ jQuery(document).ready(function($) {
     let the_rangers = document.getElementsByClassName('the-rangers');
     let the_ranged = document.getElementsByClassName('the_ranged');
     let contratar_plano = document.getElementsByClassName('contratar-plano');
+    let box_pergunta = document.getElementsByClassName('box-pergunta');
 
     //elementos selecionados pelos ID's
     let mais_servicos = document.getElementById('mais_servicos');
@@ -34,6 +35,7 @@ jQuery(document).ready(function($) {
     let content_form_servico = document.getElementById('content-form-servico');
     let fechaForm = document.getElementById('fechaForm');
     let btn_registro = document.getElementById('btn_registro');
+    let botaoMostraMaisPerguntas = document.getElementById('botaoMostraMaisPerguntas');
 
     // links fixos 
     const home_url = document.getElementById('home_url').value;
@@ -313,6 +315,40 @@ jQuery(document).ready(function($) {
 
     // fim abre form de contratar serviço
 
+    // mostrar e esconder perguntas
+
+    if (document.body.contains(box_pergunta[0])) {
+
+        for (let i = 0; i < box_pergunta.length; i++) {
+            box_pergunta[i].querySelector('i').onclick = function() {
+                let resposta = document.getElementsByClassName('resposta');
+                for (let q = 0; q < resposta.length; q++) {
+                    if (resposta[q].classList.contains(this.id)) {
+                        resposta[q].classList.remove('d-none')
+                    } else {
+                        resposta[q].classList.add('d-none')
+
+                    }
+                }
+                for (let t = 0; t < box_pergunta.length; t++) {
+                    box_pergunta[t].querySelector('i').classList.add('bi-plus')
+                    box_pergunta[t].querySelector('i').classList.remove('bi-dash')
+                }
+                this.classList.remove('bi-plus')
+                this.classList.add('bi-dash')
+            }
+        }
+
+        botaoMostraMaisPerguntas.onclick = function() {
+            for (let y = 0; y < box_pergunta.length; y++) {
+                box_pergunta[y].classList.remove('d-none');
+            }
+            this.remove();
+        }
+    }
+
+    // fim mostrar e esconder perguntas
+
     // inicia bilbioteca do AOS
 
     AOS.init({
@@ -322,6 +358,13 @@ jQuery(document).ready(function($) {
     });
 
     // swipers
+
+    const swiperPainel = new Swiper(".swiperPainel", {
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
 
     const swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',
@@ -362,8 +405,9 @@ jQuery(document).ready(function($) {
     function consultar_registro() {
         var dominio = $('#dominio').val();
         var extensao = $('#extensao').val();
+        let resultadoRegistro = document.getElementById('resultado_registro')
         if (dominio != '') {
-            $('#resultado_registro').show();
+            resultadoRegistro.classList.remove('d-none');
             $('#btn_registro').addClass('disabled').html('Aguarde...');
             $('#resultado_registro').prepend('<tr class="consultando_registro"><td colspan="3">Consultando Registro, Pode levar alguns segundos...</td></tr>');
             $.ajax({
@@ -373,6 +417,7 @@ jQuery(document).ready(function($) {
                     consultar_registro();
                 },
                 success: function(dados) {
+                    console.log(dados);
                     $('#resultado_registro').prepend('<tr><td colspan="3"><hr /></td></tr>');
                     $('#btn_registrar').show();
                     $('#msg_registrar').show();
@@ -395,8 +440,10 @@ jQuery(document).ready(function($) {
         }
     }
 
-    btn_registro.onclick = function() {
-        consultar_registro();
+    if (document.body.contains(btn_registro)) {
+        btn_registro.onclick = function() {
+            consultar_registro();
+        }
     }
 
     // fim pesquisa registro

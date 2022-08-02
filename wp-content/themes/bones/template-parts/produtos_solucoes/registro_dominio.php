@@ -35,7 +35,7 @@
                 <i class="bi bi-search h2 m-0"></i>
             </div>
         </div>
-        <table id="resultado_registro" class="w-100 d-none">
+        <table id="resultado_registro" class="w-100 d-none mt-5">
             <thead>
                 <tr>
                     <td style="width: 15px;"></td>
