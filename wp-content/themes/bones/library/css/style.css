@@ -1151,6 +1151,7 @@ section#diferenciais .container,
 
 .pergunta i {
     cursor: pointer;
+    color: #2BAFCF !important;
 }
 
 #secao-azul {
@@ -1572,7 +1573,8 @@ a.cat-blog {
 
 .bloco-infra {
     width: 350px !important;
-    height: 350px !important;
+    height: auto;
+    min-height: 450px !important;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -51,13 +51,45 @@
 
                                 ?>
                             </section>
+                            <?php
+
+                            $textos_e_imagens_comeco = get_field('textos_e_imagens_comeco', $post->ID);
+                            if ($textos_e_imagens_comeco) {
+                            ?>
+
+                                <section id="textos-imagens-comeco">
+                                    <div class="container">
+                                        <?php
+                                        if (have_rows('textos_e_imagens_comeco', $post->ID)) :
+                                            $c = 1;
+                                            while (have_rows('textos_e_imagens_comeco', $post->ID)) : the_row();
+                                                $texto_geral = get_sub_field('texto_geral', $post->ID);
+                                                $imagem_geral = get_sub_field('imagem_geral', $post->ID);
+                                        ?>
+                                                <div class="row mt-4 <?= $c % 2 == 0 ? 'flex-xl-row-reverse flex-row' : '' ?>">
+                                                    <div class="col-12 col-xl-6">
+                                                        <img src="<?= $imagem_geral ?>" alt="logo">
+                                                    </div>
+                                                    <div class="col-12 col-xl-6">
+                                                        <?= $texto_geral ?>
+                                                    </div>
+                                                </div>
+                                        <?php
+                                                $c = ++$c;
+                                            endwhile;
+                                        endif;
+                                        ?>
+                                    </div>
+                                </section>
 
                             <?php
+                            }
+
                             $titulo_painel = get_field('titulo_painel', $post->id);
                             $texto_dourado_painel = get_field('texto_dourado_painel', $post->id);
                             $texto_painel = get_field('texto_painel', $post->id);
 
-                            if ($titulo_painel !== '') {
+                            if ($titulo_painel) {
                             ?>
 
                                 <section class="mt-5 mb-5" id="galeria-painel">
@@ -196,9 +228,9 @@
 
                             <?php  }
                             $texto_parceiros = get_field('texto_parceiros', $post->id);
-                            if ($texto_parceiros !== '') { ?>
+                            if ($texto_parceiros) { ?>
 
-                                <section class="mt-5 mb-5 pt-5 pb-5" id="parceiros-tecnologicos">
+                                <section class="pt-5 pb-5" id="parceiros-tecnologicos">
 
                                     <div class="container">
                                         <div class="row">
@@ -212,7 +244,7 @@
                                                 while (have_rows('parceiros', $post->id)) : the_row();
                                                     $imagem_parceiro = get_sub_field('imagem_parceiro');
                                             ?>
-                                                    <div class="col-3 d-flex justify-content-center align-items-center">
+                                                    <div class="col-2 d-flex justify-content-center align-items-center">
                                                         <img src="<?= $imagem_parceiro ?>" alt="parceiros">
                                                     </div>
                                             <?php
@@ -230,8 +262,7 @@
 
                             if ($texto_secao_azul) { ?>
 
-                                <section class="mt-5 mb-5 pt-5 pb-5" id="secao-azul">
-
+                                <section class=" pt-5 pb-5" id="secao-azul">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12 text-white">
@@ -246,13 +277,50 @@
                                             </div>
                                         <?php } ?>
                                     </div>
-
                                 </section>
-                            <?php   }
+
+                                <?php
+                                $texto_imagens_fim = get_field('texto_imagens_fim', $post->id);
+                                $textos_e_imagens_fim = get_field('textos_e_imagens_fim', $post->id);
+                                if ($textos_e_imagens_fim) {  ?>
+
+                                    <section id="textos-imagens-fim">
+                                        <div class="container">
+                                            <?php
+                                            if ($texto_imagens_fim) { ?>
+                                                <div class="col-12 mt-5 mb-5">
+                                                    <?= $texto_imagens_fim ?>
+                                                </div>
+                                                <?php  }
+                                            if (have_rows('textos_e_imagens_fim', $post->ID)) :
+                                                $kek = 1;
+                                                while (have_rows('textos_e_imagens_fim', $post->ID)) : the_row();
+                                                    $texto_geral = get_sub_field('texto_geral', $post->ID);
+                                                    $imagem_geral = get_sub_field('imagem_geral', $post->ID);
+                                                ?>
+                                                    <div class="row mt-5 mb-5 <?= $kek % 2 == 0 ? '' : 'flex-xl-row-reverse flex-row' ?>">
+                                                        <div class="col-12 col-xl-6">
+                                                            <img src="<?= $imagem_geral ?>" alt="logo">
+                                                        </div>
+                                                        <div class="col-12 col-xl-6">
+                                                            <?= $texto_geral ?>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                    $kek = ++$kek;
+                                                endwhile;
+                                            endif;
+                                            ?>
+                                        </div>
+                                    </section>
+
+                                <?php
+                                }
+                            }
 
                             $mostrar_secao_quem_confia = get_field('mostrar_secao_quem_confia', $post->id);
                             if ($mostrar_secao_quem_confia) {
-                            ?>
+                                ?>
                                 <section id="quem-confia-home" class="mt-5 pt-5 mb-5 pb-5 container">
 
                                     <div class="row">
@@ -282,7 +350,7 @@
                             if ($perguntas) {
                             ?>
 
-                                <section id="perguntas" class="bg-c-24cb9d59 mt-5 pt-5 pb-5">
+                                <section id="perguntas" class="bg-c-24cb9d59 pt-5 pb-5">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12 text-center d-flex justify-content-center align-items-center flex-column">
