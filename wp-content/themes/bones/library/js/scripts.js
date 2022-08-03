@@ -407,6 +407,7 @@ jQuery(document).ready(function($) {
         let resultadoRegistro = document.getElementById('resultado_registro')
         if (dominio != '') {
             resultadoRegistro.classList.remove('d-none');
+            resultadoRegistro.innerHTML = '';
             $('#btn_registro').addClass('disabled').html('Aguarde...');
             $('#resultado_registro').prepend('<tr class="consultando_registro"><td colspan="3">Consultando Registro, Pode levar alguns segundos...</td></tr>');
             $.ajax({
@@ -423,11 +424,11 @@ jQuery(document).ready(function($) {
                     $('.consultando_registro').remove();
                     $.each(dados, function(i, dominio) {
                         var html_input = '';
-                        var str_registrado = '<b style="color: #199900;">Disponível para registro</b> - Valor Anual: R$ ' + dominio.valor_formatado;
+                        var str_registrado = '<b class="text-dark mt-5">Disponível para registro</b> - Valor Anual: R$ ' + dominio.valor_formatado;
                         if (dominio.registrado == 1) {
                             str_registrado = 'Domínio já Registrado';
                         } else {
-                            html_input = '<input style="margin-bottom: 0px; padding-bottom: 0px;" type="checkbox" name="registrar[' + i + ']" value="' + i + '">';
+                            html_input = '<input class="mb-0 pb-0" type="checkbox" name="registrar[' + i + ']" value="' + i + '">';
                         }
                         $('#resultado_registro').prepend('<tr><td class="text-center">' + html_input + '</td><td><b>' + i + '</b></td><td>' + str_registrado + '</td></tr>');
                     });

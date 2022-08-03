@@ -1260,6 +1260,14 @@ section#cabecario-servico h1::before {
     bottom: -5px;
 }
 
+input#btn_registrar {
+    height: 50px;
+    background-color: #CF9D21;
+    border: transparent;
+    border-radius: 50px;
+    color: white;
+}
+
 .barra-verde-2 {
     width: 70px;
     height: 5px;

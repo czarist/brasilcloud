@@ -35,16 +35,31 @@
                 <i class="bi bi-search h2 m-0"></i>
             </div>
         </div>
-        <table id="resultado_registro" class="w-100 d-none mt-5">
-            <thead>
-                <tr>
-                    <td style="width: 15px;"></td>
-                    <td>Domínio</td>
-                    <td>Status</td>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-12">
+        <form id="formulario-efetuar-registro" method="POST" action="https://contrate.brasilcloud.com.br/registro-de-dominios">
+            <div id="msg_registrar" style="display: none;">
+                <h5>Resultado da Pesquisa:</h5>
+                <p>Selecione os domínios que deseja registrar:</p>
+            </div>
+            <table id="resultado_registro" class="d-none">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>Domínio</td>
+                        <td>Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="fx fx-center">
+                <input id="btn_registrar" type="submit" name="Contratar" value="Registrar Domínio(s) Selecionado(s)" class="button botao_maior_azul" style="display: none;">
+            </div>
+        </form>
     </div>
 </div>
