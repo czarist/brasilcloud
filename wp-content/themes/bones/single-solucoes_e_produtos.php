@@ -287,6 +287,32 @@
                             $cor_fundo = get_field('cor_fundo', $post->id);
                             $medida_grade_parceiros = get_field('medida_grade_parceiros', $post->id);
 
+                            if ($medida_grade_parceiros == 'col-1') {
+                                $medida = 'col-xl-1';
+                            } else if ($medida_grade_parceiros == 'col-2') {
+                                $medida = 'col-xl-2';
+                            } else if ($medida_grade_parceiros == 'col-3') {
+                                $medida = 'col-xl-3';
+                            } else if ($medida_grade_parceiros == 'col-4') {
+                                $medida = 'col-xl-4';
+                            } else if ($medida_grade_parceiros == 'col-5') {
+                                $medida = 'col-xl-5';
+                            } else if ($medida_grade_parceiros == 'col-6') {
+                                $medida = 'col-xl-6';
+                            } else if ($medida_grade_parceiros == 'col-7') {
+                                $medida = 'col-xl-7';
+                            } else if ($medida_grade_parceiros == 'col-8') {
+                                $medida = 'col-xl-8';
+                            } else if ($medida_grade_parceiros == 'col-9') {
+                                $medida = 'col-xl-9';
+                            } else if ($medida_grade_parceiros == 'col-10') {
+                                $medida = 'col-xl-10';
+                            } else if ($medida_grade_parceiros == 'col-11') {
+                                $medida = 'col-xl-11';
+                            } else if ($medida_grade_parceiros == 'col-12') {
+                                $medida = 'col-xl-12';
+                            }
+
                             if ($texto_parceiros) { ?>
 
                                 <section class="pt-5 pb-5 <?= $cor_fundo == 'Verde' ? 'bg-c-24cb9d59' : 'bg-c-FBFBFB' ?>" id="parceiros-tecnologicos">
@@ -303,7 +329,7 @@
                                                 while (have_rows('parceiros', $post->id)) : the_row();
                                                     $imagem_parceiro = get_sub_field('imagem_parceiro');
                                             ?>
-                                                    <div class="<?= $medida_grade_parceiros ?> d-flex justify-content-center align-items-center">
+                                                    <div class="<?= $medida ?> col-12 d-flex justify-content-center align-items-center">
                                                         <img src="<?= $imagem_parceiro ?>" alt="parceiros">
                                                     </div>
                                             <?php
