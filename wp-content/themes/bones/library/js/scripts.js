@@ -327,7 +327,6 @@ jQuery(document).ready(function($) {
                         resposta[q].classList.remove('d-none')
                     } else {
                         resposta[q].classList.add('d-none')
-
                     }
                 }
                 for (let t = 0; t < box_pergunta.length; t++) {

@@ -136,11 +136,31 @@
                                 </section>
 
                             <?php }
+
+                            $texto_geral = get_field('texto_geral', $post->ID);
+                            if ($texto_geral) {
+
+                            ?>
+
+                                <section id="texto-geral" class="pt-5 pb-5">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <?= $texto_geral ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            <?php
+
+                            }
+
                             $titulo_carrocel = get_field('titulo_carrocel', $post->id);
 
                             if ($titulo_carrocel) {
                             ?>
-                                <section class="mt-5 mb-5 pt-5 pb-5" id="diferenciais">
+                                <section class="pt-5 pb-5 bg-c-FBFBFB" id="diferenciais">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12 text-center">
@@ -188,7 +208,7 @@
 
                             if ($titulo_carrocel_2) {
                             ?>
-                                <section class="mt-5 mb-5 pt-5 pb-5" id="caracteristicas">
+                                <section class="pt-5 pb-5" id="caracteristicas">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12 text-center">
@@ -210,6 +230,7 @@
                                                                         <h4 class="mt-2 text-center"><?= $titulo_caracteristica_ ?></h4>
                                                                         <p><?= $texto_caracteristica ?></p>
                                                                     </div>
+
                                                                 </div>
 
                                                         <?php
@@ -227,10 +248,48 @@
                                 </section>
 
                             <?php  }
+
+                            $imagens_e_textos_com_link_1 = get_field('imagens_e_textos_com_link_1', $post->ID);
+
+                            if ($imagens_e_textos_com_link_1) {
+                            ?>
+
+                                <section id="imagens_e_textos_com_link_1" class="">
+                                    <div class="container">
+                                        <div class="row pb-5">
+                                            <?php
+                                            if (have_rows('imagens_e_textos_com_link_1', $post->id)) :
+                                                while (have_rows('imagens_e_textos_com_link_1', $post->id)) : the_row();
+                                                    $texto_ = get_sub_field('texto_');
+                                                    $imagem = get_sub_field('imagem');
+                                                    $link = get_sub_field('link');
+                                            ?>
+                                                    <div class="col-12 col-xl-6">
+                                                        <?= $texto_ ?>
+                                                        <img src="<?= $imagem ?>" alt="logo-imagens-servicos">
+                                                        <div class="fx fx-center">
+                                                            <a class="generalSaibaMais fx fx-center text-center p-1" href="<?= $link['url'] ?>">
+                                                                <b><?= $link['title'] ?></b>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                endwhile;
+                                            endif; ?>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            <?php
+                            }
+
                             $texto_parceiros = get_field('texto_parceiros', $post->id);
+                            $cor_fundo = get_field('cor_fundo', $post->id);
+                            $medida_grade_parceiros = get_field('medida_grade_parceiros', $post->id);
+
                             if ($texto_parceiros) { ?>
 
-                                <section class="pt-5 pb-5" id="parceiros-tecnologicos">
+                                <section class="pt-5 pb-5 <?= $cor_fundo == 'Verde' ? 'bg-c-24cb9d59' : 'bg-c-FBFBFB' ?>" id="parceiros-tecnologicos">
 
                                     <div class="container">
                                         <div class="row">
@@ -244,7 +303,7 @@
                                                 while (have_rows('parceiros', $post->id)) : the_row();
                                                     $imagem_parceiro = get_sub_field('imagem_parceiro');
                                             ?>
-                                                    <div class="col-2 d-flex justify-content-center align-items-center">
+                                                    <div class="<?= $medida_grade_parceiros ?> d-flex justify-content-center align-items-center">
                                                         <img src="<?= $imagem_parceiro ?>" alt="parceiros">
                                                     </div>
                                             <?php
@@ -256,13 +315,34 @@
 
                                 </section>
                             <?php  }
+                            $texto_infografico = get_field('texto_infografico', $post->id);
+                            $imagem_infografico = get_field('imagem_infografico', $post->id);
+
+
+                            if ($texto_infografico) {
+                            ?>
+                                <section id="infografico" class="pb-5 pt-5">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 mb-5">
+                                                <?= $texto_infografico ?>
+                                            </div>
+                                            <div class="col-12">
+                                                <img src="<?= $imagem_infografico ?>" alt="infografico">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            <?php
+                            }
+
 
                             $texto_secao_azul = get_field('texto_secao_azul', $post->id);
                             $link_secao_azul = get_field('link_secao_azul', $post->id);
 
                             if ($texto_secao_azul) { ?>
 
-                                <section class=" pt-5 pb-5" id="secao-azul">
+                                <section class="pt-5 pb-5" id="secao-azul">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12 text-white">
@@ -279,48 +359,85 @@
                                     </div>
                                 </section>
 
-                                <?php
-                                $texto_imagens_fim = get_field('texto_imagens_fim', $post->id);
-                                $textos_e_imagens_fim = get_field('textos_e_imagens_fim', $post->id);
-                                if ($textos_e_imagens_fim) {  ?>
+                            <?php
+                            }
 
-                                    <section id="textos-imagens-fim">
-                                        <div class="container">
+                            $imagens_e_textos_com_link_2 = get_field('imagens_e_textos_com_link_2');
+
+                            if ($imagens_e_textos_com_link_2) {
+                            ?>
+                                <section id="imagens_e_textos_com_link_2" class="pt-5 pb-5">
+                                    <div class="container">
+                                        <div class="row pb-5">
                                             <?php
-                                            if ($texto_imagens_fim) { ?>
-                                                <div class="col-12 mt-5 mb-5">
-                                                    <?= $texto_imagens_fim ?>
-                                                </div>
-                                                <?php  }
-                                            if (have_rows('textos_e_imagens_fim', $post->ID)) :
-                                                $kek = 1;
-                                                while (have_rows('textos_e_imagens_fim', $post->ID)) : the_row();
-                                                    $texto_geral = get_sub_field('texto_geral', $post->ID);
-                                                    $imagem_geral = get_sub_field('imagem_geral', $post->ID);
-                                                ?>
-                                                    <div class="row mt-5 mb-5 <?= $kek % 2 == 0 ? '' : 'flex-xl-row-reverse flex-row' ?>">
-                                                        <div class="col-12 col-xl-6">
-                                                            <img src="<?= $imagem_geral ?>" alt="logo">
-                                                        </div>
-                                                        <div class="col-12 col-xl-6">
-                                                            <?= $texto_geral ?>
+                                            if (have_rows('imagens_e_textos_com_link_2', $post->id)) :
+                                                while (have_rows('imagens_e_textos_com_link_2', $post->id)) : the_row();
+                                                    $texto_ = get_sub_field('texto_');
+                                                    $imagem = get_sub_field('imagem');
+                                                    $link = get_sub_field('link');
+                                            ?>
+                                                    <div class="col-12 col-xl-6">
+                                                        <?= $texto_ ?>
+                                                        <img src="<?= $imagem ?>" alt="logo-imagens-servicos">
+                                                        <div class="fx fx-center">
+                                                            <a class="generalSaibaMais fx fx-center text-center p-1" href="<?= $link['url'] ?>">
+                                                                <b><?= $link['title'] ?></b>
+                                                            </a>
                                                         </div>
                                                     </div>
                                             <?php
-                                                    $kek = ++$kek;
                                                 endwhile;
-                                            endif;
-                                            ?>
+                                            endif; ?>
                                         </div>
-                                    </section>
+                                    </div>
+                                </section>
 
-                                <?php
-                                }
+                            <?php
                             }
+
+
+                            $texto_imagens_fim = get_field('texto_imagens_fim', $post->id);
+                            $textos_e_imagens_fim = get_field('textos_e_imagens_fim', $post->id);
+
+                            if ($texto_imagens_fim or $textos_e_imagens_fim) {  ?>
+
+                                <section id="textos-imagens-fim">
+                                    <div class="container">
+                                        <?php
+                                        if ($texto_imagens_fim) { ?>
+                                            <div class="col-12 mt-5 mb-5">
+                                                <?= $texto_imagens_fim ?>
+                                            </div>
+                                            <?php  }
+                                        if (have_rows('textos_e_imagens_fim', $post->ID)) :
+                                            $kek = 1;
+                                            while (have_rows('textos_e_imagens_fim', $post->ID)) : the_row();
+                                                $texto_geral = get_sub_field('texto_geral', $post->ID);
+                                                $imagem_geral = get_sub_field('imagem_geral', $post->ID);
+                                            ?>
+                                                <div class="row mt-5 mb-5 <?= $kek % 2 == 0 ? '' : 'flex-xl-row-reverse flex-row' ?>">
+                                                    <div class="col-12 col-xl-6">
+                                                        <img src="<?= $imagem_geral ?>" alt="logo">
+                                                    </div>
+                                                    <div class="col-12 col-xl-6">
+                                                        <?= $texto_geral ?>
+                                                    </div>
+                                                </div>
+                                        <?php
+                                                $kek = ++$kek;
+                                            endwhile;
+                                        endif;
+                                        ?>
+                                    </div>
+                                </section>
+
+                            <?php
+                            }
+
 
                             $mostrar_secao_quem_confia = get_field('mostrar_secao_quem_confia', $post->id);
                             if ($mostrar_secao_quem_confia) {
-                                ?>
+                            ?>
                                 <section id="quem-confia-home" class="mt-5 pt-5 mb-5 pb-5 container">
 
                                     <div class="row">
@@ -345,6 +462,99 @@
                                 </section>
 
                             <?php }
+
+                            $titulo_implantacao = get_field('titulo_implantacao', $post->id);
+                            if ($titulo_implantacao) {
+                            ?>
+                                <section id="implantacao" class="pt-5 pb-5">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <h1><?= $titulo_implantacao ?></h1>
+                                                <div class="fx fx-center">
+                                                    <div class="barra-verde"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-5">
+                                            <?php
+                                            if (have_rows('implantacao', $post->id)) :
+                                                while (have_rows('implantacao', $post->id)) : the_row();
+                                                    $texto_implantacao = get_sub_field('texto_implantacao');
+                                                    $imagem_implantacao = get_sub_field('imagem_implantacao');
+                                            ?>
+                                                    <div class="col-12 col-xl-4 ">
+
+                                                        <div class="d-flex justify-content-center text-center bloco-infra align-items-center flex-column ">
+                                                            <img src="<?= $imagem_implantacao ?>" alt="<?= $texto_implantacao ?>">
+                                                            <h4 class="mt-2 text-center"><?= $texto_implantacao ?></h4>
+                                                        </div>
+
+                                                    </div>
+                                            <?php
+                                                endwhile;
+                                            endif;
+                                            ?>
+                                        </div>
+                                    </div>
+                                </section>
+                            <?php
+
+                            }
+
+                            $iframe_video_solucao = get_field('iframe_video_solucao', $post->ID);
+
+                            if ($iframe_video_solucao) {
+                            ?>
+                                <div id="video-solucao" class="container pb-5">
+                                    <div class="row">
+                                        <div class="col-12 text-center mt-5 mb-5">
+                                            <h1>Conheça a Solução</h1>
+                                            <div class="fx fx-center">
+                                                <div class="barra-verde"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <?= $iframe_video_solucao ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php
+                            }
+
+                            $texto_certificadoras = get_field('texto_certificadoras', $post->id);
+
+                            if ($texto_certificadoras) {
+                            ?>
+                                <section id="sertificadoras" class="mt-5 mb-5 pt-5 pb-5">
+                                    <div class="container">
+                                        <div class="row mb-5">
+                                            <div class="col-12">
+                                                <h1><?= $texto_certificadoras ?></h1>
+                                                <div class="fx fx-center">
+                                                    <div class="barra-verde"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <?php
+                                            if (have_rows('certificadoras', $post->ID)) :
+                                                while (have_rows('certificadoras', $post->ID)) : the_row();
+                                                    $imagem_certificadora = get_sub_field('imagem_certificadora');
+                                            ?>
+                                                    <div class="col-xl-4 col-12 d-flex mb-2 mt-2 justify-content-center text-center align-items-center">
+                                                        <img src="<?= $imagem_certificadora ?>" alt="certificadoras">
+                                                    </div>
+                                            <?php
+                                                endwhile;
+                                            endif;
+                                            ?>
+                                        </div>
+                                    </div>
+                                </section>
+                            <?php
+                            }
 
                             $perguntas = get_field('perguntas', $post->ID);
                             if ($perguntas) {

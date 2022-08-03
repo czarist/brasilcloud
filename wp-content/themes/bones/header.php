@@ -299,7 +299,7 @@
 
 				<nav id='menu-mobile' role="navigation" class="d-none" itemscope itemtype="https://schema.org/SiteNavigationElement">
 					<div class="row ml-2 mr-2">
-						<div class="col-6 mt-5">
+						<div class="col-12">
 							<nav role="navigation">
 								<?php
 								if (have_rows('links_rodape_bloco_1', 5336)) :
@@ -353,7 +353,7 @@
 								?>
 							</nav>
 						</div>
-						<div class="col-6 mt-5">
+						<div class="col-12">
 							<nav role="navigation">
 								<?php
 								if (have_rows('links_rodape_bloco_2', 5336)) :

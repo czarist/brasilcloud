@@ -1104,11 +1104,6 @@ section#diferenciais .container,
     overflow: hidden;
 }
 
-#diferenciais,
-#parceiros-tecnologicos {
-    background-color: #FBFBFB;
-}
-
 #banners .swiper-wrapper {
     z-index: 2;
     opacity: 0.8;
@@ -1119,6 +1114,10 @@ section#diferenciais .container,
 
 
 /* BACKGROUNDS  */
+
+.bg-c-FBFBFB {
+    background-color: #FBFBFB;
+}
 
 .bg-c-24cb9d59 {
     background-color: #24cb9d59;
@@ -1272,12 +1271,18 @@ section#cabecario-servico h1::before {
 
 nav#menu-mobile {
     height: auto;
-    position: absolute;
+    position: fixed;
     background-image: linear-gradient( #007095, #24CB9D);
     width: 100%;
     top: 65px;
     max-height: 500px;
     overflow: auto;
+}
+
+nav#menu-mobile li {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 div#container-form {
