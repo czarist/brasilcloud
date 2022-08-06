@@ -26,7 +26,7 @@
                             <section id="banner" class="banner-page fx fx-center" style="background-image: url('<?= $image ?>');">
                                 <div class="filter"></div>
                                 <div class="container">
-                                    <div class="row justify-content-center align-items-center">
+                                    <div data-aos="fade-up" class="row justify-content-center align-items-center">
                                         <div class="col-8 pt-4 pb-4 text-banner text-white text-center">
                                             <h4><?= the_title() ?></h4>
                                             <?= the_content() ?>
@@ -37,7 +37,7 @@
 
                             <section id="form-trabalhe-conosco" class="mb-5 mt-5 p-0">
                                 <div class="container">
-                                    <div class="row form-box-trabalhe-com-nos">
+                                    <div data-aos="fade-up" class="row form-box-trabalhe-com-nos">
                                         <div class="col-12  ">
                                             <?= get_field('texto_trabalhe_conosco', 5329) ?>
                                         </div>

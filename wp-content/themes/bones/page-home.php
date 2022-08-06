@@ -13,14 +13,13 @@
 
 			<section id="banners" class="banner-top fx fx-center">
 				<div class="swiper position-relative">
-					<div class="swiper-wrapper">
-
+					<div id="my-particles-1"></div>
+					<div class="swiper-wrapper position-relative">
 						<?php
 						if (have_rows('banners', 8)) :
 							while (have_rows('banners', 8)) : the_row();
 								$imagem = get_sub_field('imagem', 8);
 								$texto = get_sub_field('texto', 8);
-								$i = ++$i
 						?>
 								<div class="swiper-slide banner position-relative  d-flex justify-content-start align-items-center" style="background-image: url('<?= $imagem ?>');">
 									<div class="filter"></div>
@@ -33,12 +32,10 @@
 									</div>
 								</div>
 						<?php
-
 							endwhile;
 						endif;
 						?>
 					</div>
-					<div id="my-particles-1"></div>
 					<div class="swiper-pagination"></div>
 				</div>
 			</section>
@@ -66,14 +63,16 @@
 									);
 
 									$loop = new WP_Query($args);
-
+									$count = 600;
 									while ($loop->have_posts()) : $loop->the_post();
+										$count = $count + 200;
 									?>
 
-										<div class="row servicos-bloco p-4 d-none col-12 col-xl-4 justify-content-center align-items-center">
+										<div data-aos="fade-down" data-aos-duration="<?= $count ?>" class="row servicos-bloco p-4 d-none col-12 col-xl-4 justify-content-center align-items-center">
 											<div class="col-12 the_servico d-flex justify-content-center align-items-center">
 												<div class="row w-100">
 													<div class="col-12">
+
 														<?php include 'library/images/servico_fundo.svg'; ?>
 
 														<h6><?php the_title(); ?></h6>
@@ -81,6 +80,7 @@
 														<?php the_excerpt(); ?>
 
 														<a href="<?php echo the_permalink() ?>"> <b>Saiba mais ></b> </a>
+
 													</div>
 												</div>
 											</div>
@@ -122,10 +122,12 @@
 
 									<?php
 									if (have_rows('quem_confia', 8)) :
+										$count = 600;
 										while (have_rows('quem_confia', 8)) : the_row();
+											$count = $count + 200;
 											$logo_quem_confia = get_sub_field('logo_quem_confia'); ?>
 
-											<div class="col-12 col-xl-3 mt-4 d-flex justify-content-center align-items-center">
+											<div data-aos="flip-up" data-aos-duration="<?= $count ?>" class="col-12 col-xl-3 mt-4 d-flex justify-content-center align-items-center">
 												<img src="<?= $logo_quem_confia ?>" alt="logo quem confia">
 											</div>
 
@@ -136,8 +138,8 @@
 							</section>
 
 							<section id="sobre-home" class="mt-5 pt-5 mb-5 pb-5">
-								<div class="row min-h-section">
-									<div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
+								<div class="row min-h-section m-0">
+									<div data-aos="fade-right" data-aos-duration="1000" class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
 										<div class="row justify-content-center align-items-center">
 											<div class="col-12 col-xl-6 ">
 												<h2><?= get_field('titulo_sobre', 8) ?></h2>
@@ -147,7 +149,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left" style="background-image: url('<?= get_field('imagem_sobre', 8) ?>');"></div>
+									<div data-aos="fade-left" data-aos-duration="1000" class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left mt-xl-0 mt-4 min-h-general" style="background-image: url('<?= get_field('imagem_sobre', 8) ?>');"></div>
 							</section>
 
 							<section id="blog-home" class="bg-c-24cb9d59 mb-0 min-h-section">
@@ -171,9 +173,11 @@
 											'order' => 'ASC',
 										);
 										$loop_blog = new WP_Query($the_argo);
+										$count = 500;
 										while ($loop_blog->have_posts()) : $loop_blog->the_post();
+											$count = $count + 500;
 										?>
-											<div class="swiper-slide banner row position-relative">
+											<div data-aos="flip-up" data-aos-duration="<?= $count ?>" class="swiper-slide banner row position-relative">
 												<div class="col-12 p-xl-5 p-2 d-flex justify-content-center align-items-center">
 													<?php require(dirname(__FILE__) . "/template-parts/posts/post-blog.php"); ?>
 												</div>

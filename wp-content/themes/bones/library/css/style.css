@@ -1120,7 +1120,7 @@ section#diferenciais .container,
 }
 
 .bg-c-24cb9d59 {
-    background-color: #24cb9d59;
+    background-color: #24cb9d30;
 }
 
 .bg-c-DDDDDD {
@@ -1142,6 +1142,15 @@ section#diferenciais .container,
 
 /* ENDS BACKGROUND COLOR */
 
+div#general-infos-footer p {
+    font-size: 10px;
+}
+
+.min-h-general {
+    height: auto;
+    min-height: 500px !important;
+}
+
 .pergunta {
     display: flex;
     justify-content: space-between;
@@ -1151,6 +1160,10 @@ section#diferenciais .container,
 .pergunta i {
     cursor: pointer;
     color: #2BAFCF !important;
+}
+
+section#servicos h6 {
+    font-size: 21px;
 }
 
 #secao-azul {
@@ -1181,8 +1194,10 @@ nav#hidden-menu {
     top: 13%;
     height: auto;
     min-height: 400px;
+    max-height: max-content;
     background-image: linear-gradient(to bottom, #007095, #2BAFCF);
     z-index: 999;
+    opacity: 0;
 }
 
 nav#hidden-menu a {
@@ -1500,6 +1515,10 @@ section#fale-conosco-infos hr {
 
 /* BLOG */
 
+.box-blog h6 {
+    font-size: 18px;
+}
+
 .box-blog {
     height: 455px;
     width: 370px;
@@ -1513,6 +1532,10 @@ section#fale-conosco-infos hr {
     max-height: 230px;
     width: 100%;
     max-width: 100%;
+}
+
+.swiper-slide div.box-blog {
+    min-width: 416px !important;
 }
 
 .ler-mais-blog {
@@ -1765,7 +1788,7 @@ section#cats span:hover {
 
 .barra-verde {
     width: 100px;
-    height: 10px;
+    height: 5px;
     background-color: #24CB9D;
     border-radius: 10px;
 }
@@ -1869,14 +1892,18 @@ section#form-trabalhe-conosco input[type="submit"],
 #container-form input[type="submit"],
 #formulario-produto input[type="submit"] {
     background-image: linear-gradient(to left, #24CB9D, #007095);
-    color: white;
-    width: 200px !important;
+    color: white !important;
+    width: auto;
     border: transparent;
     cursor: pointer;
     height: 55px;
     border-radius: 50px;
     justify-content: center;
     align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 200px;
+    max-width: 100%;
 }
 
 .box-pergunta {
@@ -1902,8 +1929,12 @@ section#form-trabalhe-conosco textarea,
     top: -240px;
     background-color: white;
     padding: 3pc;
-    border-radius: 50px;
-    box-shadow: 0px 0px 5px 0px #00000063;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px -4px #00000063;
+}
+
+div#infra-text-banner h1 {
+    font-size: 30px;
 }
 
 div#container-form input {
@@ -2414,6 +2445,57 @@ nav#hidden-menu .row {
     top: 3px;
 }
 
+
+/* animações transições header */
+
+.fadeIn {
+    animation: fadeIn .5s ease-in 1 forwards;
+    opacity: 1;
+}
+
+.fadeOut {
+    opacity: 0;
+    animation: fadeOut .5s ease-out 1 forwards;
+}
+
+.slideDown {
+    animation: slideDown .5s ease-in 1 forwards;
+}
+
+.slideUp {
+    animation: slideUp 1s ease-out 1 forwards;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    to {
+        bottom: 50px;
+        opacity: 0;
+    }
+}
+
+
+/* fim animações */
+
 .menu-item::before {
     background-image: url('../images/baixo.svg');
 }
@@ -2474,6 +2556,19 @@ nav#hidden-menu .row {
 
 .hentry footer {
     padding: 0;
+}
+
+div#links-rodape li {
+    margin-bottom: 6px;
+}
+
+div#links-rodape li a {
+    transition: 0.5s;
+}
+
+div#links-rodape li a:hover {
+    transition: 0.5s;
+    color: #CF9D21 !important;
 }
 
 .hentry footer p {
@@ -3034,6 +3129,12 @@ a.prev:before {
     }
 }
 
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1280px !important;
+    }
+}
+
 
 /* LARGE VIEWING SIZE */
 
@@ -3043,6 +3144,20 @@ a.prev:before {
 /*Ipad*/
 
 @media only screen and (max-width: 1024px) {
+    .min-h-general {
+        border-radius: 0 !important;
+    }
+    div#inner-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper-slide div.box-blog {
+        min-width: 0 !important;
+        max-width: 290px;
+    }
+    section#servicos h2,
     section#banner h1 {
         font-size: 20px;
     }

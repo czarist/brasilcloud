@@ -26,7 +26,7 @@
                             <section id="banner" class="banner-page fx fx-center" style="background-image: url('<?= $image ?>');">
                                 <div class="filter"></div>
                                 <div class="container">
-                                    <div class="row justify-content-center align-items-center">
+                                    <div id="infra-text-banner" data-aos="fade-up" class="row justify-content-center align-items-center">
                                         <div class="col-8 pt-4 pb-4 text-banner text-white text-center">
                                             <h4><?= the_title() ?></h4>
                                             <?= the_content() ?>
@@ -36,7 +36,7 @@
                             </section>
 
                             <section id="dados" class="mt-5">
-                                <div class="row min-h-section">
+                                <div data-aos="fade-right" class="row min-h-section">
                                     <div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-12 col-xl-6 ">
@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left" style="background-image: url('<?= get_field('imagem_1', 5277) ?>');"></div>
+                                    <div data-aos="fade-left" class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-left min-h-general" style="background-image: url('<?= get_field('imagem_1', 5277) ?>');"></div>
                                 </div>
                             </section>
 
@@ -56,12 +56,15 @@
                                                 <div class="swiper-wrapper mb-5">
                                                     <?php
                                                     if (have_rows('blocos', 5277)) :
+                                                        $count = 500;
                                                         while (have_rows('blocos', 5277)) : the_row();
                                                             $titulo_bloco = get_sub_field('titulo_bloco', 5277);
                                                             $texto_bloco = get_sub_field('texto_bloco', 5277);
                                                             $imagem_bloco = get_sub_field('imagem_bloco', 5277);
+                                                            $count =  $count + 500;
+
                                                     ?>
-                                                            <div class="swiper-slide row justify-content-center align-items-center bloco-infra position-relative">
+                                                            <div data-aos="flip-up" data-aos-duration="<?= $count ?>" class="swiper-slide row justify-content-center align-items-center bloco-infra position-relative">
 
                                                                 <div class="col-12 d-flex justify-content-center align-items-center flex-column text-center">
                                                                     <div class="content-image-bloco">
@@ -94,8 +97,8 @@
 
                             <section id="infra-bloco-3" class="mt-5 pt-5 mb-5 pb-5">
                                 <div class="row min-h-section">
-                                    <div class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-right" style="background-image: url('<?= get_field('imagem_2', 5277) ?>');"></div>
-                                    <div class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center">
+                                    <div data-aos="fade-left" class="col-12 col-xl-6 bg-center bg-cover bg-nrp br-120-right min-h-general" style="background-image: url('<?= get_field('imagem_2', 5277) ?>');"></div>
+                                    <div data-aos="fade-right" class="col-12 col-xl-6 text-left text-dark d-flex justify-content-center align-items-center min-h-general">
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-12 col-xl-6 ">
                                                 <h2><?= get_field('texto_2', 5277) ?></h2>

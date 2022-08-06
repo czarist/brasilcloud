@@ -1,6 +1,6 @@
 			<div id="newsletter" class="d-flex position-relative justify-content-center align-items-center">
 				<div class="filter-degrade"></div>
-				<div class="container">
+				<div data-aos="flip-up" data-aos-duration="1000" class="container">
 					<div class="row">
 						<div class="col-12">
 							<h1 class="text-center text-white mb-5">Inscreva-se na nossa Newsletter</h1>
@@ -31,8 +31,8 @@
 			<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 
 				<div id="inner-footer" class="container">
-					<div class="row pt-5">
-						<div class="col-6 col-xl-3 br-white">
+					<div id="links-rodape" class="row pt-5">
+						<div data-aos="fade-up" data-aos-duration="1000" class="col-12 col-xl-3 text-center text-xl-left  br-white d-xl-flex justify-content-center justify-content-xl-start">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -65,7 +65,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-6 col-xl-3 br-white">
+						<div data-aos="fade-up" data-aos-duration="1500" class="col-12 col-xl-3 text-center text-xl-left  br-white d-xl-flex justify-content-center">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -98,7 +98,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-6 col-xl-3 br-white">
+						<div data-aos="fade-up" data-aos-duration="2000" class="col-12 col-xl-3 text-center text-xl-left  br-white d-xl-flex justify-content-center">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -131,7 +131,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-6 col-xl-3">
+						<div data-aos="fade-up" data-aos-duration="2500" class="col-12 col-xl-3 text-center text-xl-left  d-xl-flex justify-content-xl-end justify-content-center">
 							<div class="row">
 								<div class="col-12">
 									<nav role="navigation">
@@ -174,24 +174,23 @@
 						</div>
 					</div>
 
-
-					<div class="row mt-5 mb-5">
-						<div class="col-12 col-xl-3">
+					<div id="general-infos-footer" class="row mt-5 mb-5">
+						<div data-aos="flip-up" data-aos-duration="1000" class="col-12 col-xl-3 d-xl-block d-flex justify-content-center mb-xl-0 mb-5">
 							<a href="<?php echo home_url(); ?>">
 								<img src="<?php echo get_template_directory_uri(); ?>/library/images/logofooter.svg" alt="logo footer">
 							</a>
 						</div>
-						<div class="col-12 col-xl-3">
-							<p class="text-left text-white">
+						<div data-aos="flip-up" data-aos-duration="1000" class="col-12 col-xl-3">
+							<p class="text-center text-white text-xl-left">
 								<?= get_field('infos', 5336) ?>
 							</p>
 						</div>
-						<div class="col-12 col-xl-3">
-							<p class="text-left text-white">
+						<div data-aos="flip-up" data-aos-duration="1000" class="col-12 col-xl-3">
+							<p class="text-center text-white text-xl-left">
 								<?= get_field('endereco', 5336) ?>
 							</p>
 						</div>
-						<div class="col-12 col-xl-3">
+						<div data-aos="flip-up" data-aos-duration="1000" class="col-12 col-xl-3 d-xl-block d-flex justify-content-center">
 							<div class="d-flex">
 								<a class="ml-2 mr-2" href="<?= get_field('facebook', 5336) ?>">
 									<img src="<?php echo get_template_directory_uri(); ?>/library/images/logofacebook.svg" alt="facebook">
@@ -220,7 +219,7 @@
 							<p class="source-org copyright">
 								&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
 								. Todos os direitos reservados.
-								<a href="http://ondaweb.com.br" target="_blank">
+								<a href="https://ondaweb.com.br" target="_blank">
 									<img class="ondaweb_icon" src="<?php echo get_template_directory_uri(); ?>/library/images/ondaweb-ico-white.png" />
 								</a>
 							</p>

@@ -85,14 +85,9 @@ jQuery(document).ready(function($) {
 
     //abre e fecha menu principal
     function fechaMenus() {
-        if (!the_outside.classList.contains('d-none')) {
-            the_outside.classList.add('d-none');
-        }
 
-        if (!hidden_menu.classList.contains('d-none')) {
-            hidden_menu.classList.add('d-none');
-            hidden_menu.classList.remove('d-flex');
-        }
+        hidden_menu.classList.add("fadeOut");
+        hidden_menu.classList.remove("fadeIn");
 
         if (hidden_menu.classList.contains('sup-nav')) {
             hidden_menu.classList.remove('sup-nav')
@@ -110,10 +105,21 @@ jQuery(document).ready(function($) {
 
         }
 
-        document.body.classList.remove('overflow-hidden');
+        if (!the_outside.classList.contains('d-none')) {
+            the_outside.classList.add('d-none');
+        }
+
+        if (!hidden_menu.classList.contains('d-none')) {
+            hidden_menu.classList.add('d-none');
+            hidden_menu.classList.remove('d-flex');
+        }
     }
 
     function mostraMenus(id) {
+
+        hidden_menu.classList.add("fadeIn");
+        hidden_menu.classList.remove("fadeOut");
+
         if (the_outside.classList.contains('d-none')) {
             the_outside.classList.remove('d-none');
         }
@@ -121,6 +127,7 @@ jQuery(document).ready(function($) {
             hidden_menu.classList.remove('d-none');
             hidden_menu.classList.add('d-flex');
         }
+
         for (let j = 0; j < menus_itens.length; j++) {
             if (menus_itens[j].classList.contains('triangulo-menu')) {
                 menus_itens[j].classList.remove('triangulo-menu');
@@ -133,8 +140,6 @@ jQuery(document).ready(function($) {
                 hidden_row.classList.remove('d-none');
             }
         }
-
-        document.body.classList.add('overflow-hidden');
     }
 
     // FIM DAS FUNÇÕES
@@ -383,7 +388,7 @@ jQuery(document).ready(function($) {
 
     const swiper2 = new Swiper('.swiper2', {
         slidesPerView: slidersCounter,
-        spaceBetween: 10,
+        spaceBetween: 0,
         pagination: {
             el: '.swiper-pagination2',
             clickable: true,

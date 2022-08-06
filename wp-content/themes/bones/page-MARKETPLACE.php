@@ -27,7 +27,7 @@
 								<div class="filter"></div>
 								<div class="container fx fx-center">
 									<div class="row justify-content-center align-items-center w-100">
-										<div class="col-8 pt-4 pb-4 text-banner text-white text-center">
+										<div data-aos="flip-up" data-aos-duration="1000" class="col-8 pt-4 pb-4 text-banner text-white text-center">
 											<h4><?= the_title() ?></h4>
 											<?= the_content() ?>
 										</div>
@@ -35,8 +35,8 @@
 								</div>
 							</section>
 							<section id="marketplace-content">
-								<div class="wrap">
-									<div class="row align-items-center justify-content-center mt-5 mb-5">
+								<div class="container">
+									<div data-aos="flip-up" data-aos-duration="1000" class="row align-items-center justify-content-center mt-5 mb-5">
 										<div class="col-10">
 											<p class="text-center">
 												<?= get_field('texto_marketplace', 5410) ?>
@@ -46,13 +46,18 @@
 									<div class="row mt-5">
 										<?php
 										if (have_rows('empresas', 5410)) :
+											$i = 0;
 											while (have_rows('empresas', 5410)) : the_row();
+												$i = $i + 500;
+												if ($i > 1500) {
+													$i = 500;
+												}
 												$logo_empresa = get_sub_field('logo_empresa', 5410);
 												$titulo = get_sub_field('titulo', 5410);
 												$texto_empresa = get_sub_field('texto_empresa', 5410);
 												$site = get_sub_field('site', 5410);
 										?>
-												<div class="col-12 col-xl-3 text-center mb-3 ">
+												<div data-aos="flip-up" data-aos-duration="<?= $i ?>" class="col-12 col-xl-3 text-center mb-3 ">
 													<div class="empresa p-2">
 														<img src="<?= $logo_empresa ?>" alt="<?= $titulo ?>">
 														<h4><b><?= $titulo ?></b></h4>

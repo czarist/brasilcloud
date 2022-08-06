@@ -268,7 +268,7 @@
                                                         <?= $texto_ ?>
                                                         <img src="<?= $imagem ?>" alt="logo-imagens-servicos">
                                                         <div class="fx fx-center">
-                                                            <a class="generalSaibaMais fx fx-center text-center p-1" href="<?= $link['url'] ?>">
+                                                            <a class="generalSaibaMais fx fx-center text-center" href="<?= $link['url'] ?>">
                                                                 <b><?= $link['title'] ?></b>
                                                             </a>
                                                         </div>
@@ -406,7 +406,7 @@
                                                         <?= $texto_ ?>
                                                         <img src="<?= $imagem ?>" alt="logo-imagens-servicos">
                                                         <div class="fx fx-center">
-                                                            <a class="generalSaibaMais fx fx-center text-center p-1" href="<?= $link['url'] ?>">
+                                                            <a class="generalSaibaMais fx fx-center text-center" href="<?= $link['url'] ?>">
                                                                 <b><?= $link['title'] ?></b>
                                                             </a>
                                                         </div>
